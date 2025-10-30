@@ -57,6 +57,24 @@
     text-decoration: none;
 }
 
+.menuItems li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.menuItems li a:hover {
+    color: var(--color-primary);
+}
+
+.menuItems li a svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
 @media screen and (max-width: 830px) {
     .navbar {
         flex-direction: column;
@@ -96,5 +114,9 @@
     .menuOpen {
         display: flex;
         z-index: 1;
+    }
+
+    .menuItems li a {
+        gap: 6px;
     }
 }

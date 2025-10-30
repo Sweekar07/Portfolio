@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { User, Briefcase, Code, Mail } from "lucide-react";
 
 import styles from "./Navbar.module.css"
 import { getImageUrl } from "../../utils";
+
 
 export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -25,16 +27,28 @@ export const Navbar = () => {
                 <ul className={`${styles.menuItems} ${menuOpen && styles.menuOpen}`}
                 onClick={() => setMenuOpen(false)}>
                     <li>
-                        <a href="#about">About</a>
+                        <a href="#about">
+                            <User size={22} />
+                            <span>About</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#experience">Experience</a>
+                        <a href="#experience">
+                            <Briefcase size={22} />
+                            <span>Experience</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#projects">Projects</a>
+                        <a href="#projects">
+                            <Code size={22} />
+                            <span>Projects</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="#contact">
+                            <Mail size={22} />
+                            <span>Contact</span>
+                        </a>
                     </li>
                 </ul>
             </div>
