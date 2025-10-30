@@ -9,6 +9,10 @@
     --color-dark: #0b2447;
     --color-bg: #04152d;
 
+    /* For logo background and letter */
+    --brand-bg: #0B1A2B; 
+    --brand-fg: #ffffff; 
+
     /* Fonts */
     --font-roboto: "Roboto";
 }
