@@ -21,18 +21,20 @@
 }
 
 .greeting {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     font-family: var(--font-roboto);
     color: var(--color-text-secondary);
+    letter-spacing: 0.5px;
 }
 
 .title {
     font-size: 72px;
     font-weight: 900;
-    margin-bottom: 33px;
+    margin-bottom: 16px;
     font-family: var(--font-roboto);
+    line-height: 1.1;
     background: linear-gradient(
         90deg, 
         rgba(255, 255, 255, 1) 70%, 
@@ -43,21 +45,22 @@
     background-clip: text;
 }
 
-.description {
-    font-size: 30px;
+.subtitle {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 28px;
     font-family: var(--font-roboto);
-    margin-bottom: 52px;
+    line-height: 1.2;
+    color: var(--color-grey);
 }
 
-.contactBtn {
-    text-decoration: none;
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    border-radius: 100px;
-    font-size: 30px;
-    font-weight: 600;
-    padding: 17px 26px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+.description {
+    font-size: 20px;
+    font-family: var(--font-roboto);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 600px;
 }
 
 .heroImg {
@@ -112,9 +115,45 @@
 @media screen and (max-width: 830px) {
     .container {
         flex-direction: column-reverse;
+        padding-top: 40px;
     }
 
     .content {
         align-items: center;
+        text-align: center;
+    }
+
+    .greeting {
+        font-size: 16px;
+    }
+
+    .title {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 36px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .ctaTagline {
+        padding-left: 0;
+    }
+
+    .ctaTagline::before {
+        display: none;
+    }
+
+    .contactBtn {
+        font-size: 16px;
+        padding: 14px 28px;
+    }
+
+    .heroImg {
+        width: 80%;
+        margin-bottom: 32px;
     }
 }
