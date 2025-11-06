@@ -8,6 +8,7 @@ import { Contact } from "./components/Contact/Contact"
 import { Navbar } from "./components/Navbar/Navbar"
 import { Loader } from "./components/Loader/Loader"
 import { SocialLinks } from "./components/SocialLinks/SocialLinks"
+import { EmailLink } from "./components/EmailLink/EmailLink";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       {loading && <Loader onDone={() => setLoading(false)} />}
       <Navbar />
       <SocialLinks />
+      <EmailLink />
       <Hero />
       <About />
       <Experience />
