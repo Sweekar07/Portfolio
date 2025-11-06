@@ -7,6 +7,8 @@ import { Projects } from "./components/Projects/Projects"
 import { Contact } from "./components/Contact/Contact"
 import { Navbar } from "./components/Navbar/Navbar"
 import { Loader } from "./components/Loader/Loader"
+import { SocialLinks } from "./components/SocialLinks/SocialLinks"
+
 
 function App() {
 
@@ -22,6 +24,7 @@ function App() {
     <div className={styles.App} >
       {loading && <Loader onDone={() => setLoading(false)} />}
       <Navbar />
+      <SocialLinks />
       <Hero />
       <About />
       <Experience />
