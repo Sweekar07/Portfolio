@@ -4,11 +4,12 @@ import { About } from "./components/About/About"
 import { Experience } from "./components/Experience/Experience"
 import { Hero } from "./components/Hero/Hero"
 import { Projects } from "./components/Projects/Projects"
-import { Contact } from "./components/Contact/Contact"
+import { Contact } from "./components/Contact/contact"
 import { Navbar } from "./components/Navbar/Navbar"
 import { Loader } from "./components/Loader/Loader"
 import { SocialLinks } from "./components/SocialLinks/SocialLinks"
 import { EmailLink } from "./components/EmailLink/EmailLink";
+import { Footer } from "./components/Footer/Footer"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Experience />
       <Projects />
       <Contact />
+      <Footer />
     </div>
   )
 }

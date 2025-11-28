@@ -1,0 +1,48 @@
+@import "../../vars.css";
+
+.footer {
+  border-top: 3px solid var(--color-grey);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 32%;
+}
+
+.text {
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icon {
+  color: var(--color-text);
+  margin: 0 6px;
+  display: inline-block;
+}
+
+.tech {
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 2px;
+}
+
+.dot {
+  margin: 0 4px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+@media screen and (max-width: 640px) {
+  .footer {
+    padding: 12px 6%;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+}
