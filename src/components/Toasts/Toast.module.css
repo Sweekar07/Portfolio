@@ -1,0 +1,119 @@
+@import "../../vars.css";
+
+.toast {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    z-index: 9999;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toastContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #576cbc 0%, #132a53 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    max-width: 400px;
+    backdrop-filter: blur(16px);
+}
+
+.toastIcon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconSuccess {
+    color: #00ff7f;
+}
+
+.iconError {
+    color: #ff4d4d;
+}
+
+.iconWarning {
+    color: #ffa500;
+}
+
+.iconProgress {
+    color: var(--color-text);
+}
+
+.iconInfo {
+    color: var(--color-primary);
+}
+
+.toastText {
+    flex: 1;
+}
+
+.toastText h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 6px 0;
+}
+
+.toastText p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.toastClose {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.toastClose:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .toast {
+        top: 80px;
+        right: 20px;
+        left: 20px;
+    }
+
+    .toastContent {
+        padding: 16px 18px;
+        max-width: 100%;
+    }
+
+    .toastText h4 {
+        font-size: 15px;
+    }
+
+    .toastText p {
+        font-size: 13px;
+    }
+}

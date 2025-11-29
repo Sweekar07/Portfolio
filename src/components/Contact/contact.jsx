@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState }  from "react";
 import { MapPin, Send } from "lucide-react";
 
+import { Toast } from "../Toasts/Toast";
 import styles from "./Contact.module.css";
 
 
 export const Contact = () => {
+    const [showToast, setShowToast] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setShowToast(true);
+    };
+
     return (
         <section id="contact" className={styles.container}>
+
+            {/* Toast Notification */}
+            <Toast
+                show={showToast}
+                type="progress"
+                title="Coming Soon!"
+                message="Email functionality is currently under development. Please reach out via email or LinkedIn directly."
+                onClose={() => setShowToast(false)}
+                duration={5000}
+            />
+
             <div className={styles.content}>
                 {/* Left column - Text & Info */}
                 <div className={styles.leftColumn}>
@@ -31,7 +50,7 @@ export const Contact = () => {
                 {/* Right column - Form */}
                 <form
                     className={styles.formColumn}
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleSubmit}
                 >
                     <h3 className={styles.formTitle}>Send a Message</h3>
                     <p className={styles.formSubtitle}>
