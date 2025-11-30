@@ -1,26 +1,103 @@
 [
   {
-    "title": "Project A",
+    "title": "AskMyPDF",
     "imageSrc": "projects/project.png",
-    "description": "This is a project made to learn the latest languages by building an app.",
-    "skills": ["React", "Express", "Node"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "description": "An AI-powered PDF assistant that turns static documents into interactive Q&A experiences using vector search and Gemini AI.",
+    "skills": [
+      "Next.js 14",
+      "TypeScript",
+      "Tailwind CSS",
+      "MongoDB Atlas Vector Search",
+      "Google Gemini API"
+    ],
+    "source": "https://github.com/Sweekar07/AskMyPDF",
+    "category": "AI/ML",
+    "screenshots": [
+      "projects/AskMyPDF-1.png",
+      "projects/AskMyPDF-2.png",
+      "projects/AskMyPDF-3.png"
+    ],
+    "longDescription": "DocuMind is a full-stack web app that converts PDFs into searchable knowledge bases with chat-style question answering. It uses server-side Next.js routes for secure upload and processing, chunks PDF content into embeddings, stores them in MongoDB Atlas Vector Search, and serves natural language answers via Google Gemini models. This project strengthened my skills in vector databases, embeddings pipelines, AI integration, and building clean, responsive UIs with real-time chat interactions.",
+    "features": [
+      "AI-powered question answering over uploaded PDFs",
+      "Smart text extraction, chunking, and vector storage",
+      "WhatsApp-style real-time chat interface",
+      "Secure token-based API access for backend routes",
+      "Scalable architecture using Next.js 14 server components and API routes"
+    ]
   },
   {
-    "title": "Project B",
+    "title": "WhatsApp Web Clone",
     "imageSrc": "projects/project.png",
-    "description": "This is a project made to learn the latest languages by building an app.",
-    "skills": ["React", "Express", "Node", "Sass"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "description": "A minimal WhatsApp Web-style chat app featuring real-time messaging, powered by FastAPI and React, designed for hands-on learning of full-stack best practices.",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "FastAPI",
+      "MongoDB Atlas",
+      "Socket.IO",
+      "Docker"
+    ],
+    "demo": "https://whatsapp-frontend-latest.onrender.com/",
+    "source": "https://github.com/Sweekar07/WhatsApp-Clone",
+    "category": "Full Stack",
+    "screenshots": [
+      "projects/whatsapp-1.png",
+      "projects/whatsapp-2.png",
+      "projects/whatsapp-3.png"
+    ],
+    "longDescription": "WhatsApp Web Clone brings together real-time chat features and a clean WhatsApp-style user interface, using FastAPI backend and React frontend. The project includes live Socket.IO messaging, RESTful APIs, MongoDB integration, and a fully Dockerized setup. Designed as a robust template for learning scalable web architecture and production-oriented development.",
+    "features": [
+      "Live real-time chat using Socket.IO",
+      "RESTful backend with FastAPI and Python",
+      "MongoDB data storage with Motor",
+      "Responsive WhatsApp-inspired UI",
+      "Dockerized infrastructure for easy deployment",
+      "Mobile-friendly, modern design"
+    ]
   },
   {
-    "title": "Project C",
+    "title": "ChatVerse",
     "imageSrc": "projects/project.png",
-    "description": "This is a project made to learn the latest languages by building an app.",
-    "skills": ["React", "Express", "Node"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "description": "A real-time messaging web app built with Django, WebSockets, and Redis for seamless communication.",
+    "skills": [
+      "Django",
+      "WebSockets",
+      "Redis",
+      "PostgreSQL"
+    ],
+    "source": "https://github.com/yourusername/chatverse",
+    "category": "Real-Time App",
+    "screenshots": [],
+    "longDescription": "ChatVerse delivers instant messaging using WebSockets and Redis channels, with PostgreSQL for message persistence. Features include typing indicators, read receipts, and group chat support.",
+    "features": [
+      "Real-time message delivery",
+      "Typing indicators and read receipts",
+      "Group chat support",
+      "Message history with PostgreSQL persistence"
+    ]
+  },
+  {
+    "title": "GadgetGuard API",
+    "imageSrc": "projects/project.png",
+    "description": "A secure Node.js & Express REST API for managing high-tech gadgets, powered by PostgreSQL with JWT authentication.",
+    "skills": [
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Sequelize",
+      "Docker"
+    ],
+    "source": "https://github.com/yourusername/gadgetguard",
+    "category": "Backend API",
+    "screenshots": [],
+    "longDescription": "GadgetGuard API provides a production-ready backend for gadget management with automated CI/CD using GitHub Actions, Docker, and Render deployment.",
+    "features": [
+      "JWT-based authentication",
+      "RESTful API design",
+      "Automated CI/CD pipeline",
+      "Docker containerization"
+    ]
   }
 ]
