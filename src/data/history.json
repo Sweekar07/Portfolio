@@ -1,29 +1,91 @@
 [
   {
-    "role": "Software Engineer",
-    "organisation": "Google",
-    "startDate": "Sept, 2022",
-    "endDate": "Present",
-    "experiences": ["Worked on Google Maps", "Reduced load times by 50%"],
-    "imageSrc": "history/google.png"
+    "company": {
+      "name": "Sura Systems Private Limited",
+      "shortName": "Sura Systems",
+      "logo": "history/sura.jpg",
+      "location": "Remote"
+    },
+    "roles": [
+      {
+        "id": "sura-software-developer",
+        "title": "Software Developer",
+        "type": "fulltime",
+        "startDate": "Dec 2024",
+        "endDate": "Sep 2025",
+        "duration": "10 months",
+        "responsibilities": [
+          "Implemented OAuth2 (Google, Facebook, GitHub, Hugging Face) and JWT authentication with FastAPI + PostgreSQL",
+          "Integrated FastAPI/Django backends with React Native for media streaming and chunked data transfer",
+          "Built modular React Native components with background playback and offline access",
+          "Configured Firebase multi-provider authentication with Firestore for user activity tracking"
+        ],
+        "technologies": [
+          "FastAPI",
+          "Django",
+          "React Native",
+          "PostgreSQL",
+          "Firebase",
+          "OAuth2",
+          "JWT"
+        ]
+      },
+      {
+        "id": "sura-project-trainee",
+        "title": "Project Trainee",
+        "type": "internship",
+        "startDate": "Sep 2024",
+        "endDate": "Nov 2024",
+        "duration": "3 months",
+        "responsibilities": [
+          "Created responsive UI/UX wireframes and Figma prototypes for dark/light modes",
+          "Developed interactive React Native quiz module with text-to-speech functionality"
+        ],
+        "technologies": ["Figma", "React Native", "UI/UX Design"]
+      }
+    ]
   },
   {
-    "role": "UI Designer",
-    "organisation": "Mirosoft",
-    "startDate": "Aug, 2021",
-    "endDate": "Aug, 2022",
-    "experiences": ["Worked on Windows 11", "Designed the control panel"],
-    "imageSrc": "history/microsoft.png"
-  },
-  {
-    "role": "SWE Intern",
-    "organisation": "Netflix",
-    "startDate": "Apr, 2020",
-    "endDate": "Jun, 2020",
-    "experiences": [
-      "Worked on component library",
-      "Helped create UI components"
-    ],
-    "imageSrc": "history/netflix.png"
+    "company": {
+      "name": "STEM [PI] Pvt. Ltd.",
+      "shortName": "STEM [PI]",
+      "logo": "history/stempi.jpg",
+      "location": "Remote"
+    },
+    "roles": [
+      {
+        "id": "stempi-software-engineer",
+        "title": "Software Engineer",
+        "type": "fulltime",
+        "startDate": "June 2024",
+        "endDate": "Aug 2024",
+        "duration": "3 months",
+        "responsibilities": [
+          "Integrated Git for streamlined project management and team workflows",
+          "Implemented Flask-Babel internationalization for multi-language support",
+          "Containerized Flask app and Elasticsearch with Docker for seamless deployment"
+        ],
+        "technologies": ["Flask", "Docker", "Elasticsearch", "Git", "Flask-Babel"]
+      },
+      {
+        "id": "stempi-software-engineer-intern",
+        "title": "Software Engineer Intern",
+        "type": "internship",
+        "startDate": "Aug 2023",
+        "endDate": "May 2024",
+        "duration": "10 months",
+        "responsibilities": [
+          "Implemented Google Drive API for real-time file viewing and editing with permission controls",
+          "Upgraded Elasticsearch for advanced semantic search and Q&A retrieval",
+          "Built real-time notifications system for user interactions (likes, comments)"
+        ],
+        "technologies": [
+          "Elasticsearch",
+          "Google Drive API",
+          "Python",
+          "REST API"
+        ]
+      }
+    ]
   }
 ]
