@@ -1,6 +1,5 @@
 @import "../../vars.css";
 
-
 .container {
   color: var(--color-text);
   margin: 80px 10%;
@@ -25,248 +24,311 @@
   margin-bottom: 16px;
 }
 
-
-/* Layout */
 .experienceLayout {
   display: grid;
-  grid-template-columns: 380px 1fr;
   gap: 32px;
   min-height: 600px;
+  transition: grid-template-columns 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.layoutContentFocused {
+  grid-template-columns: 280px 1fr;
+}
 
-/* Company Sidebar */
+.layoutSidebarFocused {
+  grid-template-columns: 380px 1fr;
+}
+
 .companySidebar {
-  background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  border-radius: 16px;
-  padding: 28px;
+  position: relative;
+  padding-left: 24px;
   height: fit-content;
   position: sticky;
   top: 100px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sidebarTitle {
+.companySidebar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 2px;
+}
+
+.sidebarHeader {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
-  font-weight: 600;
+  margin-bottom: 24px;
   color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 24px 0;
+  font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 
+.headerText {
+  opacity: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
 
-.companyTabs {
+.sidebarExpanded .headerText {
+  opacity: 1;
+  max-width: 200px;
+}
+
+.companyList {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+.companyItem {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 16px;
+  margin-left: -27px;
+  padding-left: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  position: relative;
+}
+
+.companyItem::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--color-text);
+  transition: height 0.3s ease, background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.companyItem:hover {
+  border-color: var(--color-grey);
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 28px;
+}
+
+.companyItem:hover::before {
+  height: 100%;
+}
+
+.companyItemActive::before {
+  height: 100%;
+}
+
+.companyContent {
+  display: flex;
+  align-items: center;
   gap: 14px;
 }
 
-
-.companyTab {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 14px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-align: left;
-}
-
-
-.companyTab:hover {
-  border-color: var(--color-grey);
-  transform: translateX(4px);
-}
-
-
-.companyTabActive {
-  border-color: var(--color-text);
-  box-shadow: 0 4px 12px rgba(87, 108, 188, 0.2);
-}
-
-
-.tabLogo {
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
+.companyLogo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
   object-fit: contain;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 10px;
+  background-color: var(--color-text);
+  padding: 8px;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
 }
 
+.sidebarExpanded .companyLogo {
+  width: 56px;
+  height: 56px;
+  padding: 10px;
+  background: var(--color-text);
+}
 
-.tabInfo {
+.companyItem:hover .companyLogo {
+  transform: scale(1.05);
+}
+
+.companyInfo {
   flex: 1;
+  min-width: 0;
 }
 
-
-.tabName {
-  font-size: 17px;
+.companyName {
+  font-size: 16px;
   font-weight: 600;
-  color: var(--color-text);
-  margin: 0 0 10px 0;
+  color: var(--color-grey);
+  margin: 0 0 4px 0;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
 }
 
-
-.tabDuration {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #d0d6e0;
-  margin-bottom: 6px;
-  font-weight: 500;
+.companyItemActive .companyName {
+  color: var(--color-text);
+  font-weight: 700;
 }
 
+.companyItem:hover .companyName {
+  color: var(--color-grey);
+}
 
-.tabLocation {
+.companyDetails {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebarExpanded .companyDetails {
+  opacity: 1;
+  max-height: 50px;
+}
+
+.companyDuration {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 13px;
   color: #d0d6e0;
+  font-weight: 500;
 }
-
-
-.tabChevron {
-  color: var(--color-text);
-  opacity: 0;
-  transition: all 0.25s ease;
-  flex-shrink: 0;
-}
-
-
-.companyTab:hover .tabChevron,
-.companyTabActive .tabChevron {
-  opacity: 1;
-}
-
-
-/* Content Area */
-
 
 .contentArea {
   border-radius: 16px;
   background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
   padding: 36px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
 }
 
-/* Role Tabs Bar */
+.contentExpanded {
+  opacity: 1;
+  transform: scale(1);
+}
 
+.contentShrunk {
+  opacity: 0.7;
+  transform: scale(0.97);
+}
 
-.roleTabsBar {
-  display: flex;
-  gap: 12px;
+.roleTabsContainer {
   margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--color-grey);
-  flex-wrap: wrap;
+  border-bottom: 2px solid var(--color-grey);
 }
 
+.roleTabsList {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
 
-.roleTabButton {
+.roleTabsList::-webkit-scrollbar {
+  display: none;
+}
+
+.roleTab {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-align: left;
-}
-
-
-.roleTabButton:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--color-grey);
-  transform: translateY(-2px);
-}
-
-
-.roleTabButtonActive {
+  padding: 14px 24px;
   background: var(--color-primary);
-  border-color: var(--color-text);
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
 }
 
+.roleTab:not(.roleTabActive):hover {
+  border-bottom-color: var(--color-grey);
+}
 
-.roleTabName {
+.roleTabActive {
+  border-bottom-color: var(--color-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.roleTabActive:hover {
+  border-bottom-color: var(--color-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.roleTabIcon {
+  color: var(--color-grey);
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.roleTabActive .roleTabIcon {
+  color: var(--color-text);
+}
+
+.roleTab:not(.roleTabActive):hover .roleTabIcon {
+  color: var(--color-grey);
+}
+
+.roleTabText {
   font-size: 15px;
   font-weight: 600;
+  color: var(--color-grey);
+  transition: color 0.3s ease;
+}
+
+.roleTabActive .roleTabText {
   color: var(--color-text);
 }
 
-
-.roleTabButtonActive .roleTabName {
-  color: #ffffff;
+.roleTab:not(.roleTabActive):hover .roleTabText {
+  color: var(--color-grey);
 }
 
-
-.roleTabBadge {
+.roleTabType {
+  font-size: 11px;
+  font-weight: 600;
   padding: 4px 10px;
   border-radius: 10px;
-  font-size: 11px;
-  font-weight: 500;
+  color: var(--color-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-.badgeInternship {
-  background: var(--color-secondary);
-  border: 1px solid var(--color-grey);
+.roleTabActive .roleTabType {
+  background: var(--color-primary);
   color: var(--color-text);
 }
 
-
-.badgeFulltime {
-  background: var(--color-secondary);
-  border: 1px solid var(--color-grey);
-  color: var(--color-text);
+.roleTab:not(.roleTabActive):hover .roleTabType {
+  background: rgba(255, 255, 255, 0.15);
 }
-
-.roleTabButtonActive .roleTabBadge {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-}
-
-
-/* Role Details */
-
 
 .roleDetails {
   animation: fadeIn 0.3s ease;
 }
-
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-
-/* Role Header */
-
 
 .roleHeader {
   margin-bottom: 28px;
@@ -274,96 +336,89 @@
   border-bottom: 1px solid var(--color-grey);
 }
 
+.roleMetadataGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
 
-.roleHeaderTop {
+.metaLeft {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 14px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-
-.roleTitle {
-  font-size: 26px;
-  font-weight: 700;
+.metaRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
   color: var(--color-text);
-  margin: 0;
-  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-
-.roleBadge {
-  padding: 8px 16px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 500;
+.metaRight svg {
   flex-shrink: 0;
 }
-
-
-.roleMetadata {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  color: #d0d6e0;
-  font-weight: 500;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-text);
+  font-weight: 600;
 }
 
-
-/* Role Section */
-
-
-.roleSection {
-  margin-bottom: 28px;
+.metaItem svg {
+  flex-shrink: 0;
+  color: var(--color-text);
 }
 
-
-.roleSection:last-child {
-  margin-bottom: 0;
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
+.responsibilitiesColumn {
+  display: flex;
+  flex-direction: column;
+}
 
 .sectionTitle {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
-  margin: 0 0 18px 0;
+  margin: 0 0 16px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-grey);
 }
-
-
-/* Responsibilities List - 2 Column Layout */
-
 
 .responsibilitiesList {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-
 
 .responsibilitiesList li {
   display: flex;
-  gap: 12px;
-  font-size: 15px;
-  line-height: 1.7;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.6;
   color: #d0d6e0;
 }
-
 
 .listBullet {
   color: var(--color-text);
@@ -372,66 +427,116 @@
   margin-top: 2px;
 }
 
-
-/* Tech Stack - 2 Column Layout */
-
+.techColumn {
+  display: flex;
+  flex-direction: column;
+}
 
 .techStack {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 
-
 .techBadge {
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
   background: var(--color-primary);
-  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
-
 .techBadge:hover {
   border-color: var(--color-text);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
 
+.techIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
 
-/* Responsive */
+.techIconFallback {
+  width: 28px;
+  height: 28px;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
 
+.techName {
+  color: var(--color-text);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
 
 @media screen and (max-width: 1200px) {
-  .experienceLayout {
+  .layoutSidebarFocused {
     grid-template-columns: 360px 1fr;
+  }
+  
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .techStack {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-
 @media screen and (max-width: 1024px) {
   .experienceLayout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
-
 
   .companySidebar {
     position: static;
   }
 
+  .companyDetails {
+    opacity: 1;
+    max-height: 50px;
+  }
 
-  .responsibilitiesList {
+  .headerText {
+    opacity: 1;
+    max-width: none;
+  }
+
+  .contentShrunk {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .roleMetadataGrid {
     grid-template-columns: 1fr;
   }
 
   .techStack {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 @media screen and (max-width: 768px) {
   .container {
@@ -439,28 +544,23 @@
     padding-top: 40px;
   }
 
-
   .title {
-    font-size: 32px;
+    font-size: 28px;
   }
-
 
   .titleLine {
     width: 200px;
   }
 
-
   .contentArea {
-    padding: 24px;
+    padding: 20px;
   }
 
-
-  .roleTabsBar {
+  .roleTabsList {
     flex-direction: column;
   }
 
-
-  .roleTitle {
-    font-size: 22px;
+  .techStack {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

@@ -3,18 +3,16 @@ import {
   MapPin,
   Calendar,
   Code2,
-  ChevronRight,
   Building2,
-  Briefcase
+  Briefcase,
+  Clock
 } from "lucide-react";
 
 import history from "../../data/history.json";
-import { getImageUrl } from "../../utils";
+import { getImageUrl, getTechIcon } from "../../utils";
 import styles from "./Experience.module.css";
 
-
 export const Experience = () => {
-  // Sort companies by most recent role
   const sortedCompanies = useMemo(() => {
     return [...history].sort((a, b) => {
       const latestA = new Date(a.roles[0].endDate.replace(/(\w+)\s(\d+)/, "$2 $1"));
@@ -25,19 +23,16 @@ export const Experience = () => {
 
   const [selectedCompanyIndex, setSelectedCompanyIndex] = useState(0);
   const [selectedRoleIndex, setSelectedRoleIndex] = useState(0);
+  const [isSidebarHovered, setIsSidebarHovered] = useState(false);
 
-  // Get current company and role
   const currentCompany = sortedCompanies[selectedCompanyIndex];
   const selectedRole = currentCompany?.roles[selectedRoleIndex];
 
-  // Reset to first role when company changes
   const handleCompanyChange = (index) => {
     setSelectedCompanyIndex(index);
     setSelectedRoleIndex(0);
   };
 
-
-  // Get date range for company
   const getDateRange = (roles) => {
     if (roles.length === 0) return { start: "N/A", end: "N/A" };
 
@@ -60,7 +55,6 @@ export const Experience = () => {
     };
   };
 
-
   return (
     <section className={styles.container} id="experience">
       <div className={styles.header}>
@@ -68,124 +62,148 @@ export const Experience = () => {
         <div className={styles.titleLine}></div>
       </div>
 
-      <div className={styles.experienceLayout}>
-        {/* Left sidebar - Company tabs */}
-        <div className={styles.companySidebar}>
-          <h3 className={styles.sidebarTitle}>
+      <div 
+        className={`${styles.experienceLayout} ${
+          isSidebarHovered ? styles.layoutSidebarFocused : styles.layoutContentFocused
+        }`}
+      >
+        <div
+          className={`${styles.companySidebar} ${
+            isSidebarHovered ? styles.sidebarExpanded : styles.sidebarCollapsed
+          }`}
+          onMouseEnter={() => setIsSidebarHovered(true)}
+          onMouseLeave={() => setIsSidebarHovered(false)}
+        >
+          <div className={styles.sidebarHeader}>
             <Building2 size={18} />
-            Companies
-          </h3>
-          <div className={styles.companyTabs}>
+            <span className={styles.headerText}>Companies</span>
+          </div>
+
+          <div className={styles.companyList}>
             {sortedCompanies.map((companyData, idx) => {
               const dateRange = getDateRange(companyData.roles);
               return (
                 <button
                   key={idx}
-                  className={`${styles.companyTab} ${selectedCompanyIndex === idx ? styles.companyTabActive : ""
-                    }`}
+                  className={`${styles.companyItem} ${
+                    selectedCompanyIndex === idx ? styles.companyItemActive : ""
+                  }`}
                   onClick={() => handleCompanyChange(idx)}
                 >
-                  <img
-                    src={getImageUrl(companyData.company.logo)}
-                    alt={companyData.company.name}
-                    className={styles.tabLogo}
-                  />
-                  <div className={styles.tabInfo}>
-                    <h4 className={styles.tabName}>{companyData.company.name}</h4>
-                    <div className={styles.tabDuration}>
-                      <Calendar size={14} />
-                      <span>{dateRange.start} - {dateRange.end}</span>
-                    </div>
-                    <div className={styles.tabLocation}>
-                      <MapPin size={14} />
-                      <span>{companyData.company.location}</span>
+                  <div className={styles.companyContent}>
+                    <img
+                      src={getImageUrl(companyData.company.logo)}
+                      alt={companyData.company.name}
+                      className={styles.companyLogo}
+                    />
+                    <div className={styles.companyInfo}>
+                      <h4 className={styles.companyName}>
+                        {companyData.company.name}
+                      </h4>
+                      <div className={styles.companyDetails}>
+                        <span className={styles.companyDuration}>
+                          <Calendar size={12} />
+                          {dateRange.start} - {dateRange.end}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <ChevronRight className={styles.tabChevron} size={20} />
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Right content - Role details */}
-        <div className={styles.contentArea}>
+        <div 
+          className={`${styles.contentArea} ${
+            isSidebarHovered ? styles.contentShrunk : styles.contentExpanded
+          }`}
+        >
           {currentCompany && (
             <>
-              {/* Role tabs - Show role names */}
-              <div className={styles.roleTabsBar}>
-                {currentCompany.roles.map((role, roleIdx) => (
-                  <button
-                    key={roleIdx}
-                    className={`${styles.roleTabButton} ${selectedRoleIndex === roleIdx ? styles.roleTabButtonActive : ""
+              <div className={styles.roleTabsContainer}>
+                <div className={styles.roleTabsList}>
+                  {currentCompany.roles.map((role, roleIdx) => (
+                    <button
+                      key={roleIdx}
+                      className={`${styles.roleTab} ${
+                        selectedRoleIndex === roleIdx ? styles.roleTabActive : ""
                       }`}
-                    onClick={() => setSelectedRoleIndex(roleIdx)}
-                  >
-                    <span className={styles.roleTabName}>{role.title}</span>
-                  </button>
-                ))}
+                      onClick={() => setSelectedRoleIndex(roleIdx)}
+                    >
+                      <Briefcase size={16} className={styles.roleTabIcon} />
+                      <span className={styles.roleTabText}>{role.title}</span>
+                      <span className={styles.roleTabType}>
+                        {role.type === "internship" ? "Internship" : "Full-Time"}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Selected role details */}
               {selectedRole && (
                 <div className={styles.roleDetails}>
-                  {/* Role header */}
                   <div className={styles.roleHeader}>
-                    <div className={styles.roleHeaderTop}>
-                      <h3 className={styles.roleTitle}>{selectedRole.title}</h3>
-                      <span
-                        className={`${styles.roleBadge} ${selectedRole.type === "internship"
-                            ? styles.badgeInternship
-                            : styles.badgeFulltime
-                          }`}
-                      >
-                        {selectedRole.type === "internship" ? "Internship" : "Full-Time"}
-                      </span>
-                    </div>
-                    <div className={styles.roleMetadata}>
-                      <span className={styles.metaItem}>
-                        <Calendar size={16} />
-                        {selectedRole.startDate} - {selectedRole.endDate}
-                      </span>
-                      <span className={styles.metaItem}>
-                        <Briefcase size={16} />
-                        {selectedRole.duration}
-                      </span>
-                      <span className={styles.metaItem}>
-                        <MapPin size={16} />
-                        {currentCompany.company.location}
-                      </span>
+                    <div className={styles.roleMetadataGrid}>
+                      <div className={styles.metaLeft}>
+                        <div className={styles.metaItem}>
+                          <Calendar size={18} />
+                          <span>{selectedRole.startDate} - {selectedRole.endDate}</span>
+                        </div>
+                        <div className={styles.metaItem}>
+                          <Clock size={18} />
+                          <span>{selectedRole.duration}</span>
+                        </div>
+                      </div>
+                      
+                      <div className={styles.metaRight}>
+                        <MapPin size={24} />
+                        <span>{currentCompany.company.location}</span>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Key responsibilities */}
-                  <div className={styles.roleSection}>
-                    <h4 className={styles.sectionTitle}>
-                      <Briefcase size={18} />
-                      Key Responsibilities
-                    </h4>
-                    <ul className={styles.responsibilitiesList}>
-                      {selectedRole.responsibilities.map((resp, respIdx) => (
-                        <li key={respIdx}>
-                          <span className={styles.listBullet}>▹</span>
-                          <span>{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <div className={styles.contentGrid}>
+                    <div className={styles.responsibilitiesColumn}>
+                      <h4 className={styles.sectionTitle}>
+                        <Briefcase size={18} />
+                        Key Responsibilities
+                      </h4>
+                      <ul className={styles.responsibilitiesList}>
+                        {selectedRole.responsibilities.map((resp, respIdx) => (
+                          <li key={respIdx}>
+                            <span className={styles.listBullet}>▹</span>
+                            <span>{resp}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  {/* Tech stack */}
-                  <div className={styles.roleSection}>
-                    <h4 className={styles.sectionTitle}>
-                      <Code2 size={18} />
-                      Technologies Used
-                    </h4>
-                    <div className={styles.techStack}>
-                      {selectedRole.technologies.map((tech, techIdx) => (
-                        <span key={techIdx} className={styles.techBadge}>
-                          {tech}
-                        </span>
-                      ))}
+                    <div className={styles.techColumn}>
+                      <h4 className={styles.sectionTitle}>
+                        <Code2 size={18} />
+                        Technologies Used
+                      </h4>
+                      <div className={styles.techStack}>
+                        {selectedRole.technologies.map((tech, techIdx) => {
+                          const icon = getTechIcon(tech);
+                          return (
+                            <div key={techIdx} className={styles.techBadge}>
+                              {icon ? (
+                                <img 
+                                  src={icon} 
+                                  alt={tech}
+                                  className={styles.techIcon}
+                                  loading="lazy"
+                                />
+                              ) : (
+                                <Code2 size={28} className={styles.techIconFallback} />
+                              )}
+                              <span className={styles.techName}>{tech}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
