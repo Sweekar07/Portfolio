@@ -3,11 +3,11 @@
 .container {
   color: var(--color-text);
   margin: 80px 10%;
-  padding-top: 80px;
+  padding-top: 79px;
 }
 
 .header {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .title {
@@ -17,392 +17,400 @@
 }
 
 .titleLine {
-  width: 280px;
+  width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-primary) 0%, transparent 100%);
+  background: var(--color-primary);
   border-radius: 2px;
-  margin-bottom: 16px;
 }
 
+/* Layout */
 .experienceLayout {
   display: grid;
-  gap: 32px;
-  min-height: 600px;
-  transition: grid-template-columns 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-.layoutContentFocused {
-  grid-template-columns: 280px 1fr;
-}
-
-.layoutSidebarFocused {
-  grid-template-columns: 380px 1fr;
-}
-
-.companySidebar {
-  position: relative;
-  padding-left: 24px;
-  height: fit-content;
+/* Timeline Sidebar */
+.timeline {
   position: sticky;
   top: 100px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.companySidebar::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  border-radius: 2px;
-}
-
-.sidebarHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-}
-
-.headerText {
-  opacity: 0;
-  max-width: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.sidebarExpanded .headerText {
-  opacity: 1;
-  max-width: 200px;
-}
-
-.companyList {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 24px;
+  background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.companyItem {
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 16px;
-  margin-left: -27px;
-  padding-left: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: left;
+.timelineItem {
   position: relative;
-}
-
-.companyItem::before {
-  content: "";
-  position: absolute;
-  left: -3px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  background: var(--color-text);
-  transition: height 0.3s ease, background-color 0.3s ease;
-  border-radius: 2px;
-}
-
-.companyItem:hover {
-  border-color: var(--color-grey);
-  background: rgba(255, 255, 255, 0.02);
-  padding-left: 28px;
-}
-
-.companyItem:hover::before {
-  height: 100%;
-}
-
-.companyItemActive::before {
-  height: 100%;
-}
-
-.companyContent {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(4, 21, 45, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.timelineItem:hover {
+  background: rgba(4, 21, 45, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
+}
+
+.timelineItemActive {
+  background: rgba(4, 21, 45, 0.7);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.timelineItemActive:hover {
+  background: rgba(4, 21, 45, 0.75);
+  transform: translateX(4px);
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, #7b8ed8 0%, #576cbc 100%);
+  transition: all 0.25s ease;
+}
+
+.timelineItemActive .timelineMarker,
+.timelineItem:hover .timelineMarker {
+  height: 70%;
+  box-shadow: 0 0 10px rgba(123, 142, 216, 0.5);
+}
+
+.timelineContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 
 .companyLogo {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
   object-fit: contain;
-  background-color: var(--color-text);
-  padding: 8px;
+  background: #fff;
+  padding: 6px;
   flex-shrink: 0;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.sidebarExpanded .companyLogo {
-  width: 56px;
-  height: 56px;
-  padding: 10px;
-  background: var(--color-text);
-}
-
-.companyItem:hover .companyLogo {
+.timelineItemActive .companyLogo {
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.companyInfo {
+.companyMeta {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .companyName {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--color-grey);
-  margin: 0 0 4px 0;
-  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.8);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: all 0.3s ease;
+  transition: color 0.25s ease;
 }
 
-.companyItemActive .companyName {
-  color: var(--color-text);
+.timelineItemActive .companyName {
+  color: #fff;
   font-weight: 700;
 }
 
-.companyItem:hover .companyName {
-  color: var(--color-grey);
-}
-
 .companyDetails {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.sidebarExpanded .companyDetails {
-  opacity: 1;
-  max-height: 50px;
-}
-
-.companyDuration {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
-  color: #d0d6e0;
-  font-weight: 500;
 }
 
-.contentArea {
-  border-radius: 16px;
+.companyLocation {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.companyLocation svg {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.timelineItemActive .companyLocation {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.timelineItemActive .companyLocation svg {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.companyDuration {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-grey);
+}
+
+.timelineItemActive .companyDuration {
+  color: var(--color-grey);
+}
+
+.chevron {
+  color: rgba(255, 255, 255, 0.25);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.timelineItemActive .chevron {
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.timelineItem:hover .chevron {
+  color: rgba(255, 255, 255, 0.6);
+  transform: translateX(2px);
+}
+
+/* Content Panel */
+.contentPanel {
   background: linear-gradient(180deg, #576cbc 0%, #132a53 100%);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  padding: 36px;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: left center;
+  border-radius: 16px;
+  padding: 28px 32px 32px;
+  min-height: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.contentExpanded {
-  opacity: 1;
-  transform: scale(1);
+/* Panel Header - New Grid Layout */
+.panelHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.contentShrunk {
-  opacity: 0.7;
-  transform: scale(0.97);
-}
-
-.roleTabsContainer {
-  margin-bottom: 32px;
-  border-bottom: 2px solid var(--color-grey);
-}
-
-.roleTabsList {
+/* Left Column: Roles + Date/Duration */
+.headerLeft {
   display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.roleTabsList::-webkit-scrollbar {
-  display: none;
+.roleTabsWrapper {
+  width: 100%;
+}
+
+.roleTabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .roleTab {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 24px;
-  background: var(--color-primary);
-  border: none;
-  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  background: rgba(4, 21, 45, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  white-space: nowrap;
+  transition: all 0.25s ease;
 }
 
-.roleTab:not(.roleTabActive):hover {
-  border-bottom-color: var(--color-grey);
+.roleTab:hover {
+  background: rgba(4, 21, 45, 0.7);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .roleTabActive {
-  border-bottom-color: var(--color-text);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(4, 21, 45, 0.8);
+  border-color: rgba(123, 142, 216, 0.5);
+  box-shadow: 0 4px 15px rgba(87, 108, 188, 0.25);
 }
 
-.roleTabActive:hover {
-  border-bottom-color: var(--color-text);
-  background: rgba(255, 255, 255, 0.08);
+.roleTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.roleTabIcon {
-  color: var(--color-grey);
-  transition: color 0.3s ease;
+.roleTabActive .roleTitle {
+  color: #fff;
+}
+
+.roleType {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(87, 108, 188, 0.35);
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.roleTabActive .roleType {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Single Role Header */
+.singleRoleHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.singleRoleName {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.roleTypeBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #6b7fd4 0%, #576cbc 100%);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(87, 108, 188, 0.35);
+}
+
+/* Date Meta Bar - Compact */
+.roleMetaBar {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  background: rgba(4, 21, 45, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dateItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+}
+
+.dateItem svg {
+  color: #7b8ed8;
   flex-shrink: 0;
 }
 
-.roleTabActive .roleTabIcon {
-  color: var(--color-text);
+.dateContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
-.roleTab:not(.roleTabActive):hover .roleTabIcon {
-  color: var(--color-grey);
-}
-
-.roleTabText {
-  font-size: 15px;
+.dateLabel {
+  font-size: 10px;
   font-weight: 600;
-  color: var(--color-grey);
-  transition: color 0.3s ease;
-}
-
-.roleTabActive .roleTabText {
-  color: var(--color-text);
-}
-
-.roleTab:not(.roleTabActive):hover .roleTabText {
-  color: var(--color-grey);
-}
-
-.roleTabType {
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 10px;
-  color: var(--color-grey);
+  color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  letter-spacing: 0.6px;
 }
 
-.roleTabActive .roleTabType {
-  background: var(--color-primary);
-  color: var(--color-text);
+.dateValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
 }
 
-.roleTab:not(.roleTabActive):hover .roleTabType {
-  background: rgba(255, 255, 255, 0.15);
+.dateDivider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.roleDetails {
+/* Company Logo - Right Column */
+.companyLogoLarge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.companyLogoLarge img {
+  width: 100px;
+  height: 100px;
+  border-radius: 14px;
+  object-fit: contain;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Role Content */
+.roleContent {
   animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.roleHeader {
-  margin-bottom: 28px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--color-grey);
-}
-
-.roleMetadataGrid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 20px;
-  align-items: center;
-}
-
-.metaLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.metaRight {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  color: var(--color-text);
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.metaRight svg {
-  flex-shrink: 0;
-}
-
-.metaItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--color-text);
-  font-weight: 600;
-}
-
-.metaItem svg {
-  flex-shrink: 0;
-  color: var(--color-text);
-}
-
-.contentGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-.responsibilitiesColumn {
-  display: flex;
-  flex-direction: column;
-}
-
+/* Section Titles */
 .sectionTitle {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 18px;
+  gap: 8px;
+  font-size: 12px;
   font-weight: 700;
-  color: var(--color-text);
-  margin: 0 0 16px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--color-grey);
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 14px 0;
 }
 
+.sectionTitle svg {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.skillsTitle {
+  margin-top: 24px;
+}
+
+/* Responsibilities */
 .responsibilitiesList {
   list-style: none;
   padding: 0;
@@ -413,154 +421,225 @@
 }
 
 .responsibilitiesList li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.responsibilitiesList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b8ed8 0%, #576cbc 100%);
+  box-shadow: 0 0 6px rgba(123, 142, 216, 0.4);
+}
+
+/* Tech Grid */
+.techGrid {
   display: flex;
-  gap: 14px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #d0d6e0;
-}
-
-.listBullet {
-  color: var(--color-text);
-  font-size: 20px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.techColumn {
-  display: flex;
-  flex-direction: column;
-}
-
-.techStack {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.techBadge {
+.techItem {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 12px 8px;
+  gap: 7px;
+  padding: 8px 12px;
+  background: rgba(4, 21, 45, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
-  background: var(--color-primary);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  color: #fff;
+  transition: all 0.2s ease;
 }
 
-.techBadge:hover {
-  border-color: var(--color-text);
+.techItem:hover {
+  background: rgba(4, 21, 45, 0.75);
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
 .techIcon {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
-  flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
 }
 
 .techIconFallback {
-  width: 28px;
-  height: 28px;
-  color: var(--color-text);
-  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: #7b8ed8;
 }
 
-.techName {
-  color: var(--color-text);
+/* Skills Grid */
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillTag {
+  padding: 6px 12px;
   font-size: 11px;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, rgba(123, 142, 216, 0.25) 0%, rgba(87, 108, 188, 0.15) 100%);
+  border: 1px solid rgba(123, 142, 216, 0.3);
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
 }
 
-@media screen and (max-width: 1200px) {
-  .layoutSidebarFocused {
-    grid-template-columns: 360px 1fr;
+.skillTag:hover {
+  background: linear-gradient(135deg, rgba(123, 142, 216, 0.4) 0%, rgba(87, 108, 188, 0.3) 100%);
+  border-color: rgba(123, 142, 216, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Content Grid */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .experienceLayout {
+    grid-template-columns: 1fr;
   }
-  
+
+  .timeline {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 16px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .timelineItem {
+    flex-shrink: 0;
+    min-width: 200px;
+  }
+
+  .timelineItem:hover {
+    transform: translateY(-2px);
+  }
+
+  .timelineItemActive:hover {
+    transform: translateY(-2px);
+  }
+
+  .timelineMarker {
+    left: 50%;
+    top: auto;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .timelineItemActive .timelineMarker,
+  .timelineItem:hover .timelineMarker {
+    width: 70%;
+    height: 4px;
+  }
+
   .contentGrid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
-  .techStack {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .experienceLayout {
-    grid-template-columns: 1fr !important;
-  }
-
-  .companySidebar {
-    position: static;
-  }
-
-  .companyDetails {
-    opacity: 1;
-    max-height: 50px;
-  }
-
-  .headerText {
-    opacity: 1;
-    max-width: none;
-  }
-
-  .contentShrunk {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .contentGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .roleMetadataGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .techStack {
-    grid-template-columns: repeat(3, 1fr);
+  .companyLogoLarge img {
+    width: 70px;
+    height: 70px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
-    margin: 60px 6%;
+    margin: 40px 5%;
     padding-top: 40px;
   }
 
-  .title {
-    font-size: 28px;
-  }
-
-  .titleLine {
-    width: 200px;
-  }
-
-  .contentArea {
+  .contentPanel {
     padding: 20px;
   }
 
-  .roleTabsList {
+  .panelHeader {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .companyLogoLarge {
+    order: -1;
+    justify-content: flex-end;
+  }
+
+  .companyLogoLarge img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .roleTabs {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .singleRoleName {
+    font-size: 18px;
+  }
+
+  .roleMetaBar {
     flex-direction: column;
   }
 
-  .techStack {
-    grid-template-columns: repeat(3, 1fr);
+  .dateDivider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .timeline {
+    padding: 12px;
+  }
+
+  .timelineItem {
+    padding: 12px;
+    min-width: 180px;
+  }
+
+  .companyLogo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .companyName {
+    font-size: 13px;
+  }
+
+  .companyDetails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .companyDetails .metaDot {
+    display: none;
   }
 }

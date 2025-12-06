@@ -15,20 +15,26 @@
         "endDate": "Sep 2025",
         "duration": "10 months",
         "responsibilities": [
-          "Implemented OAuth2 (Google, Facebook, GitHub, Hugging Face) and JWT authentication with FastAPI + PostgreSQL",
-          "Integrated FastAPI/Django backends with React Native for media streaming and chunked data transfer",
-          "Built modular React Native components with background playback and offline access",
-          "Configured Firebase multi-provider authentication with Firestore for user activity tracking"
+          "Implemented multi-provider authentication (Google, Facebook, GitHub, Hugging Face)",
+          "Built FastAPI + PostgreSQL backend with OAuth2 and JWT token flows",
+          "Developed media-streaming APIs with chunked data delivery",
+          "Integrated React Native with FastAPI/Django for real-time data access",
+          "Built offline-ready modular components for background video/audio playback",
+          "Implemented Firebase analytics + Firestore for user activity tracking"
         ],
         "technologies": [
           "FastAPI",
           "Django",
           "React Native",
           "PostgreSQL",
-          "Firebase",
-          "OAuth2",
-          "JWT"
-        ]
+          "Firebase"
+        ],
+        "skills": {
+          "authentication": ["OAuth2", "JWT", "Firebase Auth"],
+          "api_architecture": ["REST API", "Streaming APIs", "Webhooks"],
+          "mobile_app": ["Offline-first Design", "Background Media"],
+          "design": ["UI/UX Wireframes", "Component Architecture"]
+        }
       },
       {
         "id": "sura-project-trainee",
@@ -38,10 +44,14 @@
         "endDate": "Nov 2024",
         "duration": "3 months",
         "responsibilities": [
-          "Created responsive UI/UX wireframes and Figma prototypes for dark/light modes",
-          "Developed interactive React Native quiz module with text-to-speech functionality"
+          "Designed responsive Figma wireframes with light/dark themes",
+          "Developed interactive React Native quiz module with text-to-speech"
         ],
-        "technologies": ["Figma", "React Native", "UI/UX Design"]
+        "technologies": ["Figma", "React Native"],
+        "skills": {
+          "design": ["UI/UX Design", "Prototyping", "Wireframing"],
+          "mobile_app": ["Animations", "TTS Integration"]
+        }
       }
     ]
   },
@@ -61,11 +71,15 @@
         "endDate": "Aug 2024",
         "duration": "3 months",
         "responsibilities": [
-          "Integrated Git for streamlined project management and team workflows",
-          "Implemented Flask-Babel internationalization for multi-language support",
-          "Containerized Flask app and Elasticsearch with Docker for seamless deployment"
+          "Integrated Git workflows for version control and collaboration",
+          "Implemented Flask-Babel for multilingual support",
+          "Containerized Flask + Elasticsearch systems using Docker"
         ],
-        "technologies": ["Flask", "Docker", "Elasticsearch", "Git", "Flask-Babel"]
+        "technologies": ["Flask", "Docker", "Elasticsearch", "Git"],
+        "skills": {
+          "internationalization": ["Flask-Babel", "i18n"],
+          "devops": ["Containerization", "Dockerized App Setup"]
+        }
       },
       {
         "id": "stempi-software-engineer-intern",
@@ -75,16 +89,20 @@
         "endDate": "May 2024",
         "duration": "10 months",
         "responsibilities": [
-          "Implemented Google Drive API for real-time file viewing and editing with permission controls",
-          "Upgraded Elasticsearch for advanced semantic search and Q&A retrieval",
-          "Built real-time notifications system for user interactions (likes, comments)"
+          "Integrated Google Drive API for collaboration-based file access",
+          "Implemented advanced Elasticsearch semantic search pipelines",
+          "Built notification system for real-time interactions"
         ],
         "technologies": [
           "Elasticsearch",
           "Google Drive API",
-          "Python",
-          "REST API"
-        ]
+          "Python"
+        ],
+        "skills": {
+          "search": ["Semantic Search", "Q&A Retrieval"],
+          "api_architecture": ["REST API", "Google APIs"],
+          "realtime": ["Notifications", "Event Systems"]
+        }
       }
     ]
   }
