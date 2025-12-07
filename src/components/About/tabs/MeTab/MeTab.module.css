@@ -1,0 +1,158 @@
+@import "../../../../vars.css";
+
+.meSection {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+
+.intro {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.greeting {
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-family: var(--font-courier);
+}
+
+.name {
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.roleWrapper {
+    font-size: 22px;
+    color: var(--color-grey);
+    font-weight: 400;
+}
+
+.dynamicRole {
+    display: inline-block;
+    color: var(--color-text);
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: var(--color-primary);
+    animation: blink 0.7s infinite;
+    margin-left: 3px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+
+.story {
+    margin-bottom: 60px;
+    line-height: 1.7;
+}
+
+.story p {
+    font-size: 18px;
+    color: var(--color-grey);
+    margin-bottom: 20px;
+    font-family: var(--font-roboto);
+}
+
+.story .highlight {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+
+.techStack {
+    margin-top: 60px;
+}
+
+.techStack h4 {
+    font-size: 18px;
+    color: var(--color-text);
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.techGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 20px;
+}
+
+.techGrid ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.techGrid ul li {
+    font-size: 15px;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    padding-left: 20px;
+    position: relative;
+    font-family: var(--font-courier);
+    font-weight: 400;
+}
+
+.techGrid ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 18px;
+    line-height: 15px;
+}
+
+
+@media screen and (max-width: 830px) {
+    .name {
+        font-size: 40px;
+    }
+
+    .roleWrapper {
+        font-size: 18px;
+    }
+
+    .story p {
+        font-size: 16px;
+    }
+
+    .techGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .name {
+        font-size: 32px;
+    }
+
+    .techGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .story p {
+        font-size: 15px;
+    }
+}
