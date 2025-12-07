@@ -60,7 +60,7 @@ export const Experience = () => {
   return (
     <section className={styles.container} id="experience">
       <header className={styles.header}>
-        <h2 className={styles.title}>Experience</h2>
+        <h2 className={styles.title}>Where I’ve Been & What I’ve Built</h2>
         <div className={styles.titleLine} />
       </header>
 
