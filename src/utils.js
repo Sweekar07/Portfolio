@@ -17,7 +17,7 @@ import elasticsearchIcon from './assets/icons/tech/elasticsearch.svg';
 import figmaIcon from './assets/icons/tech/figma.svg';
 import ReactnativeIcon from './assets/icons/tech/reactnative.svg';
 import FirebaseIcon from './assets/icons/tech/firebase.svg';
-import OauthIcon from './assets/icons/tech/Oauth.svg';
+import OauthIcon from './assets/icons/tech/oauth.svg';
 
 export const techIcons = {
   'React': reactIcon,
