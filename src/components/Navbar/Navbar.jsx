@@ -4,6 +4,13 @@ import { User, Briefcase, Code, Mail } from "lucide-react";
 import styles from "./Navbar.module.css"
 import { getImageUrl } from "../../utils";
 
+// https://github.com/bchiang7/v4
+// https://v4.brittanychiang.com/
+
+// https://github.com/soumyajit4419/Portfolio
+// https://soumyajit.vercel.app/
+
+// https://aayushbharti.in/
 
 export const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
