@@ -1,0 +1,194 @@
+@import "../../../../vars.css";
+
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    padding-left: 150px;
+    margin-top: 50px;
+}
+
+.hobbiesCarousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    min-height: 500px;
+}
+
+.hobbyCard {
+    position: absolute;
+    width: 350px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    background: linear-gradient(135deg, rgba(25, 55, 109, 0.3) 0%, rgba(25, 55, 109, 0.1) 100%);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(87, 108, 188, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.centerCard {
+    transform: translateX(0) scale(1.1);
+    z-index: 10;
+    opacity: 1;
+    filter: brightness(1.2);
+}
+
+.centerCard::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, rgba(87, 108, 188, 0.6), rgba(25, 55, 109, 0.4));
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(20px);
+}
+
+.adjacentCard {
+    z-index: 5;
+    opacity: 0.5;
+    filter: brightness(0.7) blur(2px);
+    transform: scale(0.85);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.leftCard {
+    transform: translateX(-380px) scale(0.85);
+}
+
+.rightCard {
+    transform: translateX(380px) scale(0.85);
+}
+
+.hiddenCard {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hobbyCard h4 {
+    color: var(--color-text);
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.hobbyCard img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+}
+
+.centerCard img {
+    transform: scale(1.05);
+}
+
+.hobbyCard p {
+    color: var(--color-grey);
+    font-size: 15px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.centerCard p {
+    color: var(--color-text);
+}
+
+.carouselDots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(87, 108, 188, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: rgba(87, 108, 188, 0.5);
+    transform: scale(1.2);
+}
+
+.activeDot {
+    background: var(--color-primary);
+    width: 32px;
+    border-radius: 6px;
+    box-shadow: 0 0 12px rgba(87, 108, 188, 0.6);
+}
+
+@media screen and (max-width: 1024px) {
+    .hobbyCard {
+        width: 300px;
+    }
+
+    .leftCard {
+        transform: translateX(-330px) scale(0.85);
+    }
+
+    .rightCard {
+        transform: translateX(330px) scale(0.85);
+    }
+
+    .hobbyCard img {
+        height: 280px;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .carouselContainer {
+        padding: 40px 0;
+    }
+
+    .hobbyCard {
+        width: 280px;
+    }
+
+    .adjacentCard {
+        opacity: 0.3;
+        transform: scale(0.7);
+    }
+
+    .leftCard {
+        transform: translateX(-250px) scale(0.7);
+    }
+
+    .rightCard {
+        transform: translateX(250px) scale(0.7);
+    }
+
+    .hobbyCard img {
+        height: 240px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hobbyCard {
+        width: 260px;
+    }
+
+    .centerCard {
+        transform: scale(1);
+    }
+
+    .adjacentCard {
+        display: none;
+    }
+
+    .hobbyCard img {
+        height: 200px;
+    }
+}

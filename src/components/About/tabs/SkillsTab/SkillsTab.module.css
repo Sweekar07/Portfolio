@@ -1,0 +1,555 @@
+@import "../../../../vars.css";
+
+/* Skills Section */
+.skillsSection {
+    width: 100%;
+    padding-left: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 30px;
+}
+
+/* Category Row - Compact Single Row Layout */
+.categoryRow {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, rgba(87, 108, 188, 0.08) 0%, rgba(25, 55, 109, 0.05) 100%);
+    border: 1px solid rgba(87, 108, 188, 0.2);
+    border-radius: 14px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Right to Left - Initial slide + continuous movement */
+.categoryRow.rightToLeft {
+    flex-direction: row;
+    animation: slideInFromRight 0.8s ease-out;
+}
+
+.categoryRow.rightToLeft .skillsFlow {
+    flex-direction: row;
+    justify-content: flex-start;
+    animation: scrollRight 12s linear infinite;
+}
+
+/* Left to Right - Initial slide + continuous movement */
+.categoryRow.leftToRight {
+    flex-direction: row-reverse;
+    animation: slideInFromLeft 0.8s ease-out;
+}
+
+.categoryRow.leftToRight .categoryHeader {
+    flex-direction: row-reverse;
+}
+
+.categoryRow.leftToRight .skillsFlow {
+    flex-direction: row;
+    justify-content: flex-end;
+    animation: scrollLeft 12s linear infinite;
+}
+
+/* Initial Row Slide Animations */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* CONTINUOUS Scrolling Animations */
+@keyframes scrollRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(500px);
+    }
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-500px);
+    }
+}
+
+/* Pause animation on hover */
+.categoryRow:hover .skillsFlow {
+    animation-play-state: paused;
+}
+
+.categoryRow:hover {
+    background: linear-gradient(135deg, rgba(87, 108, 188, 0.12) 0%, rgba(25, 55, 109, 0.08) 100%);
+    border-color: rgba(87, 108, 188, 0.35);
+    box-shadow: 0 4px 16px rgba(87, 108, 188, 0.15);
+}
+
+/* Category Header - Compact */
+.categoryHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 160px;
+    flex-shrink: 0;
+}
+
+.iconContainer {
+    background: rgba(87, 108, 188, 0.2);
+    border: 1px solid rgba(87, 108, 188, 0.3);
+    border-radius: 9px;
+    padding: 8px;
+    color: var(--color-grey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.categoryRow:hover .iconContainer {
+    background: rgba(87, 108, 188, 0.3);
+    transform: scale(1.08);
+}
+
+.categoryTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text);
+    font-family: var(--font-roboto);
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Skills Flow - Compact with continuous animation */
+.skillsFlow {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Individual Skill Item - More Compact */
+.skillItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: linear-gradient(180deg, rgba(87, 108, 188, 0.15) 0%, rgba(19, 42, 83, 0.1) 100%);
+    border: 1px solid rgba(87, 108, 188, 0.25);
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    min-width: 75px;
+    flex-shrink: 0;
+    animation: fadeInScale 0.5s ease-out backwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.skillItem:hover {
+    background: linear-gradient(180deg, rgba(87, 108, 188, 0.25) 0%, rgba(19, 42, 83, 0.15) 100%);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(87, 108, 188, 0.3);
+    z-index: 10;
+}
+
+/* Skill Icon - Compact */
+.skillIcon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.skillItem:hover .skillIcon {
+    transform: scale(1.12) rotate(5deg);
+}
+
+.skillIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Skill Name - Compact */
+.skillName {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-text);
+    font-family: var(--font-roboto);
+    line-height: 1.3;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1400px) {
+    .skillsSection {
+        padding-left: 80px;
+    }
+
+    .categoryRow {
+        padding: 13px 18px;
+        gap: 18px;
+    }
+
+    .categoryHeader {
+        min-width: 150px;
+    }
+
+    .categoryTitle {
+        font-size: 15px;
+    }
+
+    .skillsFlow {
+        gap: 10px;
+    }
+
+    .skillItem {
+        padding: 9px 11px;
+        min-width: 72px;
+    }
+
+    .skillIcon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .skillName {
+        font-size: 11px;
+    }
+
+    /* Keep same animation speed */
+    .categoryRow.rightToLeft .skillsFlow {
+        animation: scrollRight 12s linear infinite;
+    }
+
+    .categoryRow.leftToRight .skillsFlow {
+        animation: scrollLeft 12s linear infinite;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .skillsSection {
+        gap: 14px;
+        padding-left: 60px;
+    }
+
+    .categoryRow {
+        padding: 12px 16px;
+        gap: 16px;
+    }
+
+    .categoryHeader {
+        min-width: 140px;
+        gap: 9px;
+    }
+
+    .categoryTitle {
+        font-size: 15px;
+    }
+
+    .skillsFlow {
+        gap: 9px;
+    }
+
+    .skillItem {
+        padding: 9px 10px;
+        min-width: 70px;
+    }
+
+    .skillIcon {
+        width: 35px;
+        height: 35px;
+        padding: 5px;
+    }
+
+    .skillName {
+        font-size: 10px;
+    }
+
+    /* Slightly faster on medium screens */
+    .categoryRow.rightToLeft .skillsFlow {
+        animation: scrollRight 10s linear infinite;
+    }
+
+    .categoryRow.leftToRight .skillsFlow {
+        animation: scrollLeft 10s linear infinite;
+    }
+
+    /* Reduce scroll distance for smaller screens */
+    @keyframes scrollRight {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(30px);
+        }
+    }
+
+    @keyframes scrollLeft {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-30px);
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .skillsSection {
+        gap: 14px;
+        padding-left: 40px;
+    }
+
+    .categoryRow {
+        padding: 12px 14px;
+        gap: 14px;
+    }
+
+    .categoryHeader {
+        min-width: 135px;
+    }
+
+    .iconContainer {
+        padding: 7px;
+    }
+
+    .categoryTitle {
+        font-size: 14px;
+    }
+
+    .skillsFlow {
+        gap: 9px;
+    }
+
+    .skillItem {
+        padding: 8px 10px;
+        min-width: 68px;
+    }
+
+    .skillIcon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .skillName {
+        font-size: 10px;
+    }
+
+    /* Keep smooth animations */
+    .categoryRow.rightToLeft .skillsFlow {
+        animation: scrollRight 10s linear infinite;
+    }
+
+    .categoryRow.leftToRight .skillsFlow {
+        animation: scrollLeft 10s linear infinite;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .skillsSection {
+        gap: 12px;
+        padding-left: 20px;
+    }
+
+    .categoryRow {
+        flex-direction: column !important;
+        padding: 12px;
+        gap: 12px;
+        align-items: stretch;
+        overflow: visible;
+    }
+
+    /* Stop continuous scrolling on mobile */
+    .categoryRow.rightToLeft .skillsFlow,
+    .categoryRow.leftToRight .skillsFlow {
+        animation: none;
+    }
+
+    /* Simplified animations for mobile */
+    .categoryRow.rightToLeft,
+    .categoryRow.leftToRight {
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .categoryHeader {
+        min-width: unset;
+        justify-content: flex-start;
+        flex-direction: row !important;
+    }
+
+    .categoryRow.leftToRight .categoryHeader {
+        flex-direction: row !important;
+    }
+
+    .categoryTitle {
+        font-size: 15px;
+    }
+
+    .skillsFlow {
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        gap: 8px;
+        overflow: visible;
+    }
+
+    .skillItem {
+        padding: 9px 10px;
+        min-width: 66px;
+    }
+
+    .skillIcon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .skillName {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .skillsSection {
+        gap: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .categoryRow {
+        padding: 11px;
+        gap: 10px;
+    }
+
+    .categoryHeader {
+        gap: 8px;
+    }
+
+    .iconContainer {
+        padding: 7px;
+    }
+
+    .categoryTitle {
+        font-size: 14px;
+    }
+
+    .skillsFlow {
+        gap: 8px;
+        justify-content: center !important;
+    }
+
+    .skillItem {
+        padding: 8px 9px;
+        min-width: 64px;
+        gap: 5px;
+    }
+
+    .skillIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .skillName {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .skillsSection {
+        gap: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .categoryRow {
+        padding: 10px;
+    }
+
+    .categoryHeader {
+        flex-wrap: wrap;
+    }
+
+    .categoryTitle {
+        font-size: 13px;
+    }
+
+    .skillsFlow {
+        gap: 7px;
+    }
+
+    .skillItem {
+        padding: 8px;
+        min-width: 60px;
+    }
+
+    .skillIcon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .skillName {
+        font-size: 9px;
+    }
+}

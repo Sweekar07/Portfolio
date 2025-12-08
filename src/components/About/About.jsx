@@ -6,15 +6,30 @@ import EducationTab from './tabs/EducationTab/EducationTab';
 import SkillsTab from './tabs/SkillsTab/SkillsTab';
 import HobbiesTab from './tabs/HobbiesTab/HobbiesTab';
 
-
 export const About = () => {
     const [activeTab, setActiveTab] = useState('me');
 
     const tabs = [
-        { id: 'me', label: 'Me' },
-        { id: 'education', label: 'Education' },
-        { id: 'skills', label: 'Skills' },
-        { id: 'hobbies', label: 'Hobbies' }
+        {
+            id: 'me',
+            label: 'Me',
+            title: 'My story'
+        },
+        {
+            id: 'education',
+            label: 'Education',
+            title: 'Where I\'ve learned & grown'
+        },
+        {
+            id: 'skills',
+            label: 'Skills',
+            title: 'What I bring to the table'
+        },
+        {
+            id: 'hobbies',
+            label: 'Hobbies',
+            title: 'What I do for fun'
+        }
     ];
 
     const renderContent = () => {
@@ -32,10 +47,16 @@ export const About = () => {
         }
     };
 
+    // Get current tab title
+    const getCurrentTitle = () => {
+        const currentTab = tabs.find(tab => tab.id === activeTab);
+        return currentTab?.title || 'A little about me';
+    };
+
     return (
         <section className={styles.container} id="about">
             <header className={styles.header}>
-                <h2 className={styles.title}>A little about me</h2>
+                <h2 className={styles.title}>{getCurrentTitle()}</h2>
                 <div className={styles.titleLine} />
             </header>
 

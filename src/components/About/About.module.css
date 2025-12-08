@@ -139,6 +139,7 @@
     }
 
     .contentWrapper {
+        padding-left: 100px;
         gap: 30px;
     }
 
@@ -184,6 +185,7 @@
 
     /* Switch to horizontal tabs on mobile */
     .contentWrapper {
+        padding-left: 100px;
         flex-direction: column-reverse;
         gap: 20px;
     }

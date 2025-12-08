@@ -1,0 +1,907 @@
+@import "../../../../vars.css";
+
+/* ==================== MAIN SECTION ==================== */
+.educationSection {
+  width: 95%;
+  position: relative;
+  padding-left: 110px;
+  margin-top: 50px;
+}
+
+/* ==================== TOP TOGGLE ==================== */
+.topToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(87, 108, 188, 0.08) 0%, rgba(25, 55, 109, 0.05) 100%);
+  border: 2px solid rgba(87, 108, 188, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.topToggle:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(87, 108, 188, 0.2);
+}
+
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.toggleLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-grey);
+  transition: all 0.3s ease;
+  font-family: var(--font-roboto);
+  opacity: 0.7;
+}
+
+.toggleLabel .activeIcon {
+  color: var(--color-primary);
+}
+
+.labelText {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.activeIcon+.labelText {
+  color: var(--color-primary);
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* Switch Styles */
+.switchWrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switchInput {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.switch {
+  position: relative;
+  display: block;
+  width: 56px;
+  height: 28px;
+  background: rgba(87, 108, 188, 0.2);
+  border: 2px solid rgba(87, 108, 188, 0.3);
+  border-radius: 28px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.switchHandle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.switchHandle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: rgba(87, 108, 188, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Checked State */
+.switchInput:checked+.switch {
+  background: linear-gradient(135deg, var(--color-primary) 0%, rgba(87, 108, 188, 0.85) 100%);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 12px rgba(87, 108, 188, 0.4);
+}
+
+.switchInput:checked+.switch .switchHandle {
+  transform: translateX(28px);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.switchInput:checked+.switch .switchHandle::before {
+  background: var(--color-primary);
+  width: 8px;
+  height: 8px;
+}
+
+/* Hover Effects */
+.switchWrapper:hover .switch {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 8px rgba(87, 108, 188, 0.3);
+}
+
+.switchWrapper:hover .switchHandle {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+
+.switchInput:checked+.switch:hover .switchHandle {
+  transform: translateX(28px) scale(1.1);
+}
+
+/* Focus State */
+.switchInput:focus+.switch {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* View Indicator */
+.viewIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(87, 108, 188, 0.12);
+  border-radius: 8px;
+  border: 1px solid rgba(87, 108, 188, 0.2);
+}
+
+.indicatorDot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.indicatorText {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Main Content */
+.mainContent {
+  width: 100%;
+}
+
+/* Remove old sidebar styles - keep only these for backward compatibility */
+.contentWrapper {
+  width: 100%;
+}
+
+/* ==================== LIST VIEW ==================== */
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.educationCard {
+  background: linear-gradient(135deg, rgba(87, 108, 188, 0.06) 0%, rgba(25, 55, 109, 0.03) 100%);
+  border: 1px solid rgba(87, 108, 188, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.educationCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(87, 108, 188, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.educationCard:hover::before {
+  left: 100%;
+}
+
+.educationCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(87, 108, 188, 0.2);
+  background: linear-gradient(135deg, rgba(87, 108, 188, 0.1) 0%, rgba(25, 55, 109, 0.06) 100%);
+}
+
+.cardContent {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.logoSection {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.universityLogo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: var(--color-text);
+  padding: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.educationCard:hover .universityLogo {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.logoGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(87, 108, 188, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.educationCard:hover .logoGlow {
+  opacity: 1;
+}
+
+.infoSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.universityName {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  font-family: var(--font-roboto);
+  line-height: 1.3;
+}
+
+.arrowIcon {
+  color: var(--color-primary);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.arrowActive {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.degreeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.degreeText {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.separator {
+  color: rgba(87, 108, 188, 0.4);
+  font-weight: 300;
+}
+
+.courseText {
+  font-size: 16px;
+  color: var(--color-grey);
+  font-weight: 500;
+}
+
+.detailsRow {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-grey);
+}
+
+.icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.yearBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(87, 108, 188, 0.15);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  border: 1px solid rgba(87, 108, 188, 0.3);
+}
+
+.achievementSection {
+  margin-top: 8px;
+}
+
+.achievementBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(87, 108, 188, 0.2) 0%, rgba(87, 108, 188, 0.1) 100%);
+  border: 1px solid rgba(87, 108, 188, 0.3);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.cardAccent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-primary);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.accentActive {
+  transform: scaleY(1);
+}
+
+/* ==================== TABLE VIEW ==================== */
+.tableContainer {
+  width: 100%;
+}
+
+.tableControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+  min-width: 250px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-grey);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  background: rgba(87, 108, 188, 0.08);
+  border: 2px solid rgba(87, 108, 188, 0.2);
+  border-radius: 10px;
+  color: var(--color-text);
+  font-size: 14px;
+  font-family: var(--font-roboto);
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: rgba(87, 108, 188, 0.12);
+  box-shadow: 0 0 0 3px rgba(87, 108, 188, 0.1);
+}
+
+.searchInput::placeholder {
+  color: var(--color-grey);
+  opacity: 0.6;
+}
+
+.resultCount {
+  font-size: 14px;
+  color: var(--color-grey);
+  font-weight: 500;
+  padding: 8px 16px;
+  background: rgba(87, 108, 188, 0.08);
+  border-radius: 8px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.eduTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: var(--color-text);
+  font-family: var(--font-roboto);
+  background: rgba(11, 36, 71, 0.4);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.eduTable th {
+  background: linear-gradient(135deg, var(--color-primary) 0%, rgba(87, 108, 188, 0.85) 100%);
+  padding: 18px 24px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  user-select: none;
+}
+
+.sortableHeader {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sortableHeader span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sortableHeader:hover {
+  background: rgba(87, 108, 188, 0.95);
+}
+
+.sortIcon {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.sortIconActive {
+  opacity: 1;
+  color: var(--color-text);
+}
+
+.actionHeader {
+  text-align: center;
+}
+
+.eduTable th:first-child {
+  border-top-left-radius: 16px;
+}
+
+.eduTable th:last-child {
+  border-top-right-radius: 16px;
+}
+
+.tableRow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+}
+
+.tableRow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(87, 108, 188, 0.3), transparent);
+}
+
+.tableRow:hover {
+  background: rgba(87, 108, 188, 0.12);
+  transform: scale(1.005);
+}
+
+.tableRow.expanded {
+  background: rgba(87, 108, 188, 0.15);
+}
+
+.eduTable td {
+  padding: 20px 24px;
+  font-size: 15px;
+  color: var(--color-grey);
+  transition: all 0.3s ease;
+}
+
+.institutionCell {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tableLogo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: var(--color-text);
+  padding: 8px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableRow:hover .tableLogo {
+  transform: scale(1.1) rotate(-2deg);
+}
+
+.institutionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tableLocation {
+  font-size: 12px;
+  color: var(--color-grey);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.degreeBadge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(87, 108, 188, 0.2);
+  border: 1px solid rgba(87, 108, 188, 0.4);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.tableRow:hover .degreeBadge {
+  background: rgba(87, 108, 188, 0.3);
+  border-color: var(--color-primary);
+}
+
+.courseCell {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.yearInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.durationText {
+  font-size: 12px;
+  color: var(--color-grey);
+  opacity: 0.7;
+}
+
+.actionCell {
+  text-align: center;
+}
+
+.expandBtn {
+  background: rgba(87, 108, 188, 0.15);
+  border: 1px solid rgba(87, 108, 188, 0.3);
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.expandBtn:hover {
+  background: var(--color-primary);
+  color: var(--color-text);
+  transform: scale(1.15);
+  border-color: var(--color-primary);
+}
+
+/* Expanded Content */
+.expandedContent {
+  background: rgba(87, 108, 188, 0.08);
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expandedDetails {
+  padding: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.detailSection h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detailSection h4::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.detailSection p {
+  font-size: 14px;
+  color: var(--color-grey);
+  line-height: 1.7;
+}
+
+.detailSection strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skillTags span {
+  padding: 8px 14px;
+  background: rgba(87, 108, 188, 0.2);
+  border: 1px solid rgba(87, 108, 188, 0.3);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.skillTags span:hover {
+  background: rgba(87, 108, 188, 0.3);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--color-grey);
+  opacity: 0.6;
+}
+
+.emptyState svg {
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyState p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media screen and (max-width: 1200px) {
+  .contentWrapper {
+    gap: 16px;
+  }
+
+  .sidebarToggle {
+    min-width: 120px;
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .eduTable {
+    font-size: 14px;
+  }
+
+  .eduTable th,
+  .eduTable td {
+    padding: 16px 18px;
+  }
+
+  .tableLogo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .expandedDetails {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .contentWrapper {
+    flex-direction: column-reverse;
+  }
+
+  .sidebarToggle {
+    position: relative;
+    top: 0;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .toggleContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .viewIndicator {
+    display: none;
+  }
+
+  .educationCard {
+    padding: 20px;
+  }
+
+  .cardContent {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .universityLogo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .universityName {
+    font-size: 20px;
+  }
+
+  .tableWrapper {
+    overflow-x: scroll;
+  }
+
+  .eduTable {
+    min-width: 700px;
+  }
+
+  .expandedDetails {
+    padding: 20px;
+  }
+
+  .tableControls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchBox {
+    max-width: 100%;
+  }
+
+  .resultCount {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .labelText {
+    display: none;
+  }
+
+  .toggleLabel {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .sidebarToggle {
+    padding: 12px;
+  }
+
+  .detailsRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .educationCard {
+    padding: 16px;
+  }
+
+  .universityName {
+    font-size: 18px;
+  }
+
+  .degreeText {
+    font-size: 15px;
+  }
+
+  .expandedDetails {
+    padding: 16px;
+    gap: 16px;
+  }
+}
