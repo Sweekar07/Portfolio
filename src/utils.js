@@ -3,6 +3,7 @@ import javascriptIcon from '../assets/icons/tech/javascript.svg';
 import typescriptIcon from '../assets/icons/tech/typescript.svg';
 import pythonIcon from '../assets/icons/tech/python.svg';
 import djangoIcon from '../assets/icons/tech/django.svg';
+import djangoRestIcon from '../assets/icons/tech/djangorest.svg';
 import flaskIcon from '../assets/icons/tech/flask.svg';
 import fastapiIcon from '../assets/icons/tech/fastapi.svg';
 import postgresqlIcon from '../assets/icons/tech/postgresql.svg';
@@ -24,6 +25,7 @@ export const techIcons = {
   'TypeScript': typescriptIcon,
   'Python': pythonIcon,
   'Django': djangoIcon,
+  'Django REST': djangoRestIcon,
   'Flask': flaskIcon,
   'FastAPI': fastapiIcon,
   'PostgreSQL': postgresqlIcon,
