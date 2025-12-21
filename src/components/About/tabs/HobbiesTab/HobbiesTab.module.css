@@ -150,7 +150,12 @@
 
 @media screen and (max-width: 830px) {
     .carouselContainer {
-        padding: 40px 0;
+        padding-left: 15px;
+        padding: 30px 15px;
+    }
+
+    .hobbiesCarousel {
+        min-height: 450px;
     }
 
     .hobbyCard {
@@ -176,19 +181,107 @@
 }
 
 @media screen and (max-width: 480px) {
+    .carouselContainer {
+        margin-top: 20px;
+        padding: 20px 0;
+        width: 100%;
+        position: relative;
+    }
+
+    .hobbiesCarousel {
+        min-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0 15px;
+        position: relative;
+        overflow: visible;
+    }
+
     .hobbyCard {
-        width: 260px;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px;
+        left: auto;
+        right: auto;
+        transform: none;
+        margin: 0;
     }
 
     .centerCard {
-        transform: scale(1);
+        transform: none;
+        position: relative;
     }
 
     .adjacentCard {
         display: none;
     }
 
+    .hobbyCard h4 {
+        font-size: 20px;
+        margin-bottom: 14px;
+        text-align: center;
+    }
+
     .hobbyCard img {
-        height: 200px;
+        height: 320px;
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 16px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .hobbyCard p {
+        font-size: 14px;
+        line-height: 1.65;
+        text-align: center;
+    }
+
+    .carouselDots {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 25px;
+        padding: 10px 0;
+    }
+
+    .dot {
+        width: 14px;
+        height: 14px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .dot::before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(87, 108, 188, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .activeDot {
+        width: 14px;
+        min-width: 44px;
+    }
+
+    .activeDot::before {
+        width: 28px;
+        height: 10px;
+        border-radius: 5px;
+        background: var(--color-primary);
+        box-shadow: 0 0 12px rgba(87, 108, 188, 0.6);
     }
 }

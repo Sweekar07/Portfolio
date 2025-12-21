@@ -274,3 +274,215 @@
         max-width: 70%;
     }
 }
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 90px 5% 50px;
+    min-height: auto;
+    width: 100%;
+  }
+
+  .content {
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  /* Left Column */
+  .leftColumn {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .kicker {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  /* Location Box */
+  .locationBox {
+    max-width: 100%;
+    width: 100%;
+    padding: 16px 18px;
+    gap: 14px;
+    margin-bottom: 0;
+  }
+
+  .locationIconWrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .locationIcon {
+    stroke-width: 2;
+  }
+
+  .locationLabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .locationValue {
+    font-size: 15px;
+  }
+
+  /* Form Column */
+  .formColumn {
+    max-width: 100%;
+    width: 100%;
+    padding: 28px 20px 30px;
+    border-radius: 16px;
+  }
+
+  .formTitle {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .formSubtitle {
+    font-size: 13px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* Form Fields */
+  .row {
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .input,
+  .textarea {
+    padding: 13px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .row + .input {
+    margin-bottom: 14px;
+  }
+
+  .textarea {
+    min-height: 120px;
+    margin-bottom: 18px;
+  }
+
+  /* Submit Button */
+  .submitButton {
+    padding: 14px 28px;
+    font-size: 15px;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .sendIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    padding: 70px 4% 40px;
+  }
+
+  .content {
+    gap: 30px;
+  }
+
+  .kicker {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .locationBox {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .locationIconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .locationIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .locationLabel {
+    font-size: 10px;
+  }
+
+  .locationValue {
+    font-size: 14px;
+  }
+
+  .formColumn {
+    padding: 24px 18px 26px;
+    border-radius: 14px;
+  }
+
+  .formTitle {
+    font-size: 20px;
+  }
+
+  .formSubtitle {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .row {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .input,
+  .textarea {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .row + .input {
+    margin-bottom: 12px;
+  }
+
+  .textarea {
+    min-height: 110px;
+    margin-bottom: 16px;
+  }
+
+  .submitButton {
+    padding: 13px 24px;
+    font-size: 14px;
+    gap: 7px;
+  }
+
+  .sendIcon {
+    width: 15px;
+    height: 15px;
+  }
+}

@@ -183,6 +183,10 @@
         min-height: auto;
     }
 
+    .header {
+        padding-left: 10px;
+    }
+
     /* Switch to horizontal tabs on mobile */
     .contentWrapper {
         padding-left: 100px;
@@ -240,7 +244,17 @@
 
 @media screen and (max-width: 480px) {
     .container {
-        padding: 60px 5px;
+        padding: 80px 10px;
+    }
+
+    .header {
+        padding-left: 10px;
+    }
+
+    .contentWrapper {
+        padding-left: 15px;
+        margin-top: 20px;
+        padding-right: 15px;
     }
 
     .tabButton,

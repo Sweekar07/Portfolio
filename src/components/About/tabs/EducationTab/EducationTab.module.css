@@ -870,6 +870,13 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  .educationSection {
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   .labelText {
     display: none;
   }

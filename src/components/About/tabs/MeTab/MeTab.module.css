@@ -3,7 +3,7 @@
 .meSection {
     max-width: 900px;
     margin: 0 auto;
-    padding: 50px 20px;
+    padding: 40px 20px;
 }
 
 
@@ -13,7 +13,7 @@
 }
 
 .greeting {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--color-text);
     margin-bottom: 8px;
     font-weight: 400;
@@ -33,6 +33,7 @@
     font-size: 22px;
     color: var(--color-grey);
     font-weight: 400;
+    line-height: 1.5;
 }
 
 .dynamicRole {
@@ -65,7 +66,7 @@
 
 
 .story {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     line-height: 1.7;
 }
 
@@ -83,7 +84,7 @@
 
 
 .techStack {
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 .techStack h4 {
@@ -91,6 +92,7 @@
     color: var(--color-text);
     margin-bottom: 24px;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 .techGrid {
@@ -126,8 +128,22 @@
 
 
 @media screen and (max-width: 830px) {
+    .meSection {
+        padding: 30px 15px;
+    }
+
+    .intro {
+        margin-bottom: 35px;
+    }
+
+    .greeting {
+        font-size: 15px;
+    }
+
     .name {
-        font-size: 40px;
+        font-size: 36px;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
     }
 
     .roleWrapper {
@@ -135,24 +151,131 @@
     }
 
     .story p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .story {
+        margin-bottom: 40px;
+    }
+
+    .story p {
         font-size: 16px;
+        line-height: 1.65;
+        margin-bottom: 18px;
+    }
+
+    .techStack {
+        margin-top: 40px;
+    }
+
+    .techStack h4 {
+        font-size: 17px;
+        margin-bottom: 20px;
     }
 
     .techGrid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 0 15px;
+    }
+
+    .techGrid ul li {
+        font-size: 14px;
+        margin-bottom: 10px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .name {
-        font-size: 32px;
+    .meSection {
+        padding: 25px 10px;
+        /* padding-left: 0; */
     }
 
-    .techGrid {
-        grid-template-columns: 1fr;
+    .intro {
+        margin-bottom: 30px;
+    }
+
+    .greeting {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .name {
+        font-size: 28px;
+        letter-spacing: -0.3px;
+        margin-bottom: 10px;
+    }
+
+    .roleWrapper {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .dynamicRole {
+        display: block;
+        margin-left: 0;
+        margin-top: 4px;
+    }
+
+    .story {
+        margin-bottom: 35px;
     }
 
     .story p {
         font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+
+    .techStack {
+        margin-top: 35px;
+    }
+
+    .techStack h4 {
+        font-size: 16px;
+        margin-bottom: 18px;
+        line-height: 1.5;
+    }
+
+    .techGrid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .techGrid ul li {
+        font-size: 14px;
+        margin-bottom: 10px;
+        padding-left: 18px;
+    }
+
+    .techGrid ul li::before {
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    .meSection {
+        padding: 20px 8px;
+    }
+
+    .name {
+        font-size: 26px;
+    }
+
+    .roleWrapper {
+        font-size: 15px;
+    }
+
+    .story p {
+        font-size: 14px;
+    }
+
+    .techStack h4 {
+        font-size: 15px;
+    }
+
+    .techGrid ul li {
+        font-size: 13px;
     }
 }
