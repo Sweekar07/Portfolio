@@ -10,6 +10,7 @@ import { Loader } from "./components/Loader/Loader"
 import { SocialLinks } from "./components/SocialLinks/SocialLinks"
 import { EmailLink } from "./components/EmailLink/EmailLink";
 import { Footer } from "./components/Footer/Footer"
+import { CursorEffect } from "./components/CursorEffect/CursorEffect"
 
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Minimal delay so animation plays even on fast loads
     const t = setTimeout(() => setLoading(false), 2200);
     return () => clearTimeout(t);
   }, []);
@@ -25,6 +25,7 @@ function App() {
   return (
     <div className={styles.App} >
       {loading && <Loader onDone={() => setLoading(false)} />}
+      {!loading && <CursorEffect />}
       <Navbar />
       <SocialLinks />
       <EmailLink />
