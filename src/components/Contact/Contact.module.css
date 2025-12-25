@@ -5,24 +5,81 @@
     padding: 120px 10% 80px;
     color: var(--color-text);
     display: flex;
-    align-items: center;
-    min-height: 99vh;
+    align-items: flex-start;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.container.fullWidthMode {
+    padding: 100px 5% 60px;
 }
 
 .content {
     display: flex;
     gap: 60px;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
 }
 
+/* Full Width Calendar Mode */
+.fullWidthCalendar {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
 
-/* Left column - Text & Info */
+.calendarHeader {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.backButtonLarge {
+    background: rgba(87, 108, 188, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 400px;
+}
+
+.backButtonLarge:hover {
+    background: rgba(8, 22, 48, 0.85);
+    border-color: var(--color-text);
+    transform: translateX(-4px);
+}
+
+.calendarTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.fullCalendarEmbed {
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    background: transparent;
+    padding: 0;
+    margin-left: 100px;
+}
+
+/* Left column */
 .leftColumn {
     flex: 1;
-    max-width: 600px;
+    max-width: 500px;
+    position: sticky;
+    top: 140px;
 }
 
 .kicker {
@@ -55,7 +112,6 @@
     background: rgba(8, 22, 48, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 14px;
-    margin-bottom: 32px;
     transition: all 0.3s ease;
     max-width: 280px;
 }
@@ -102,7 +158,6 @@
     color: var(--color-text);
 }
 
-
 /* Right column - Form */
 .formColumn {
     flex: 1;
@@ -116,10 +171,29 @@
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
 }
 
+/* Form Header */
+.formHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.formHeaderLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headerIcon {
+    color: var(--color-text);
+    opacity: 0.9;
+}
+
 .formTitle {
     font-size: 28px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 .formSubtitle {
@@ -128,6 +202,29 @@
     margin-bottom: 32px;
 }
 
+/* Toggle Button */
+.toggleButton {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(8, 22, 48, 0.6);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.toggleButton:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--color-text);
+    transform: rotate(180deg);
+}
+
+/* Form Fields */
 .row {
     display: flex;
     gap: 18px;
@@ -170,7 +267,7 @@
     box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
 }
 
-.row+.input {
+.row + .input {
     margin-bottom: 18px;
 }
 
@@ -212,8 +309,91 @@
     transform: translateY(-2px);
 }
 
-/* === RESPONSIVE === */
+/* Meeting Types */
+.meetingTypes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+}
 
+.meetingCard {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    background: rgba(8, 22, 48, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.meetingCard:hover {
+    background: rgba(8, 22, 48, 0.8);
+    border-color: var(--color-text);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.meetingIcon {
+    font-size: 32px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(87, 108, 188, 0.2);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.meetingInfo {
+    flex: 1;
+}
+
+.meetingTitle {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 6px 0;
+}
+
+.meetingDesc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 8px 0;
+}
+
+.meetingMeta {
+    display: flex;
+    gap: 16px;
+}
+
+.metaItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.metaItem svg {
+    opacity: 0.8;
+}
+
+.cardArrow {
+    color: rgba(255, 255, 255, 0.4);
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+
+.meetingCard:hover .cardArrow {
+    transform: rotate(-90deg) translateX(4px);
+    color: var(--color-text);
+}
+
+/* Responsive */
 @media screen and (max-width: 1100px) {
     .content {
         gap: 40px;
@@ -226,6 +406,10 @@
     .title {
         font-size: 36px;
     }
+
+    .fullCalendarEmbed {
+        height: 700px;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -234,22 +418,35 @@
         min-height: auto;
     }
 
+    .container.fullWidthMode {
+        padding: 80px 5% 50px;
+    }
+
     .content {
         flex-direction: column;
         gap: 50px;
     }
 
-    .leftColumn,
+    .leftColumn {
+        position: static;
+        max-width: 100%;
+    }
+
     .formColumn {
         max-width: 100%;
+        padding: 30px 28px 32px;
     }
 
     .title {
         font-size: 32px;
     }
 
-    .formColumn {
-        padding: 30px 28px 32px;
+    .fullCalendarEmbed {
+        height: 650px;
+    }
+
+    .calendarTitle {
+        font-size: 28px;
     }
 }
 
@@ -271,218 +468,78 @@
     }
 
     .locationBox {
-        max-width: 70%;
+        max-width: 100%;
+    }
+
+    .meetingCard {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .meetingIcon {
+        font-size: 28px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .meetingTitle {
+        font-size: 16px;
+    }
+
+    .meetingDesc {
+        font-size: 13px;
+    }
+
+    .meetingMeta {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .fullCalendarEmbed {
+        height: 600px;
+        padding: 15px;
+    }
+
+    .calendarHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .calendarTitle {
+        font-size: 24px;
     }
 }
 
 @media screen and (max-width: 480px) {
-  .container {
-    padding: 90px 5% 50px;
-    min-height: auto;
-    width: 100%;
-  }
+    .container {
+        padding: 90px 5% 50px;
+    }
 
-  .content {
-    flex-direction: column;
-    gap: 35px;
-  }
+    .fullCalendarEmbed {
+        height: 550px;
+        padding: 12px;
+    }
 
-  /* Left Column */
-  .leftColumn {
-    max-width: 100%;
-    width: 100%;
-  }
+    .meetingTypes {
+        gap: 12px;
+    }
 
-  .kicker {
-    font-size: 13px;
-    letter-spacing: 0.15em;
-    margin-bottom: 10px;
-  }
+    .meetingCard {
+        padding: 14px;
+    }
 
-  .title {
-    font-size: 26px;
-    margin-bottom: 16px;
-    line-height: 1.25;
-  }
+    .meetingIcon {
+        font-size: 24px;
+        width: 45px;
+        height: 45px;
+    }
 
-  .subtitle {
-    font-size: 14px;
-    line-height: 1.65;
-    margin-bottom: 24px;
-  }
+    .meetingTitle {
+        font-size: 15px;
+    }
 
-  /* Location Box */
-  .locationBox {
-    max-width: 100%;
-    width: 100%;
-    padding: 16px 18px;
-    gap: 14px;
-    margin-bottom: 0;
-  }
-
-  .locationIconWrapper {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-  }
-
-  .locationIcon {
-    stroke-width: 2;
-  }
-
-  .locationLabel {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-  }
-
-  .locationValue {
-    font-size: 15px;
-  }
-
-  /* Form Column */
-  .formColumn {
-    max-width: 100%;
-    width: 100%;
-    padding: 28px 20px 30px;
-    border-radius: 16px;
-  }
-
-  .formTitle {
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-
-  .formSubtitle {
-    font-size: 13px;
-    margin-bottom: 24px;
-    line-height: 1.5;
-  }
-
-  /* Form Fields */
-  .row {
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-
-  .input,
-  .textarea {
-    padding: 13px 16px;
-    font-size: 14px;
-    border-radius: 8px;
-  }
-
-  .row + .input {
-    margin-bottom: 14px;
-  }
-
-  .textarea {
-    min-height: 120px;
-    margin-bottom: 18px;
-  }
-
-  /* Submit Button */
-  .submitButton {
-    padding: 14px 28px;
-    font-size: 15px;
-    gap: 8px;
-    margin-top: 6px;
-  }
-
-  .sendIcon {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .container {
-    padding: 70px 4% 40px;
-  }
-
-  .content {
-    gap: 30px;
-  }
-
-  .kicker {
-    font-size: 12px;
-  }
-
-  .title {
-    font-size: 24px;
-    margin-bottom: 14px;
-  }
-
-  .subtitle {
-    font-size: 13px;
-    margin-bottom: 20px;
-  }
-
-  .locationBox {
-    padding: 14px 16px;
-    gap: 12px;
-  }
-
-  .locationIconWrapper {
-    width: 40px;
-    height: 40px;
-  }
-
-  .locationIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .locationLabel {
-    font-size: 10px;
-  }
-
-  .locationValue {
-    font-size: 14px;
-  }
-
-  .formColumn {
-    padding: 24px 18px 26px;
-    border-radius: 14px;
-  }
-
-  .formTitle {
-    font-size: 20px;
-  }
-
-  .formSubtitle {
-    font-size: 12px;
-    margin-bottom: 20px;
-  }
-
-  .row {
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .input,
-  .textarea {
-    padding: 12px 14px;
-    font-size: 13px;
-  }
-
-  .row + .input {
-    margin-bottom: 12px;
-  }
-
-  .textarea {
-    min-height: 110px;
-    margin-bottom: 16px;
-  }
-
-  .submitButton {
-    padding: 13px 24px;
-    font-size: 14px;
-    gap: 7px;
-  }
-
-  .sendIcon {
-    width: 15px;
-    height: 15px;
-  }
+    .meetingDesc {
+        font-size: 12px;
+    }
 }
