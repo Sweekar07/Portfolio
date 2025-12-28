@@ -320,6 +320,7 @@
   background: rgba(4, 21, 45, 0.4);
   border-radius: 10px;
   overflow: hidden;
+  margin-top: 8px;
 }
 
 .dateItem {
@@ -358,23 +359,6 @@
 .dateDivider {
   width: 1px;
   background: rgba(255, 255, 255, 0.1);
-}
-
-/* Company Logo - Right Column */
-.companyLogoLarge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.companyLogoLarge img {
-  width: 100px;
-  height: 100px;
-  border-radius: 14px;
-  object-fit: contain;
-  background: #fff;
-  padding: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Role Content */
@@ -564,10 +548,6 @@
     gap: 28px;
   }
 
-  .companyLogoLarge img {
-    width: 70px;
-    height: 70px;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -583,16 +563,6 @@
   .panelHeader {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  .companyLogoLarge {
-    order: -1;
-    justify-content: flex-end;
-  }
-
-  .companyLogoLarge img {
-    width: 60px;
-    height: 60px;
   }
 
   .roleTabs {
@@ -751,11 +721,6 @@
   .headerLeft {
     gap: 14px;
     width: 100%;
-  }
-
-  /* Company Logo - Move to top */
-  .companyLogoLarge {
-    display: none;
   }
 
   /* Role Tabs */
@@ -935,11 +900,6 @@
 
   .contentPanel {
     padding: 16px 14px;
-  }
-
-  .companyLogoLarge img {
-    width: 60px;
-    height: 60px;
   }
 
   .singleRoleName {

@@ -162,14 +162,7 @@ export const Experience = () => {
                     </div>
                   )}
                 </div>
-
-                {/* Right Column: Company Logo */}
-                <div className={styles.companyLogoLarge}>
-                  <img
-                    src={getImageUrl(currentCompany.company.logo)}
-                    alt={currentCompany.company.name}
-                  />
-                </div>
+                
               </div>
 
               {/* Role Content */}
