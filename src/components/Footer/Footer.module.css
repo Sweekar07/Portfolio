@@ -6,7 +6,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 32%;
+  padding: 20px 10%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 
 .text {
@@ -37,12 +45,27 @@
   color: var(--color-text);
 }
 
-@media screen and (max-width: 640px) {
-  .footer {
-    padding: 12px 6%;
-  }
+.visitorInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-left: 4px;
+}
 
-  .text {
-    font-size: 12px;
-  }
+.eyeIcon {
+  color: var(--color-primary);
+  animation: blink 3s ease-in-out infinite;
+}
+
+.count {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
 }
