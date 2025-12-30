@@ -28,14 +28,14 @@
   },
   {
     "title": "WhatsApp Web Clone",
-    "imageSrc": "projects/project.png",
+    "imageSrc": "projects/whatsapp_clone/page_loader.png",
     "description": "A minimal WhatsApp Web-style chat app featuring real-time messaging, powered by FastAPI and React, designed for hands-on learning of full-stack best practices.",
     "skills": [
       "React",
-      "TypeScript",
-      "Vite",
       "FastAPI",
       "MongoDB Atlas",
+      "TypeScript",
+      "Vite",
       "Socket.IO",
       "Docker"
     ],
@@ -43,9 +43,9 @@
     "source": "https://github.com/Sweekar07/WhatsApp-Clone",
     "category": "Full Stack",
     "screenshots": [
-      "projects/whatsapp-1.png",
-      "projects/whatsapp-2.png",
-      "projects/whatsapp-3.png"
+      "projects/whatsapp_clone/page_loader.png",
+      "projects/whatsapp_clone/landing_page.png",
+      "projects/whatsapp_clone/chat_screen.png"
     ],
     "longDescription": "WhatsApp Web Clone brings together real-time chat features and a clean WhatsApp-style user interface, using FastAPI backend and React frontend. The project includes live Socket.IO messaging, RESTful APIs, MongoDB integration, and a fully Dockerized setup. Designed as a robust template for learning scalable web architecture and production-oriented development.",
     "features": [
