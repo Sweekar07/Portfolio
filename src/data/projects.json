@@ -1,7 +1,7 @@
 [
   {
     "title": "AskMyPDF",
-    "imageSrc": "projects/project.png",
+    "imageSrc": "projects/askMyPDF/home_page.png",
     "description": "An AI-powered PDF assistant that turns static documents into interactive Q&A experiences using vector search and Gemini AI.",
     "skills": [
       "Next.js 14",
@@ -13,11 +13,13 @@
     "source": "https://github.com/Sweekar07/AskMyPDF",
     "category": "AI/ML",
     "screenshots": [
-      "projects/AskMyPDF-1.png",
-      "projects/AskMyPDF-2.png",
-      "projects/AskMyPDF-3.png"
+      "projects/askMyPDF/initial_upload_screen.png",
+      "projects/askMyPDF/after_upload_screen.png",
+      "projects/askMyPDF/answer1.png",
+      "projects/askMyPDF/answer2.png",
+      "projects/askMyPDF/answer3.png"
     ],
-    "longDescription": "DocuMind is a full-stack web app that converts PDFs into searchable knowledge bases with chat-style question answering. It uses server-side Next.js routes for secure upload and processing, chunks PDF content into embeddings, stores them in MongoDB Atlas Vector Search, and serves natural language answers via Google Gemini models. This project strengthened my skills in vector databases, embeddings pipelines, AI integration, and building clean, responsive UIs with real-time chat interactions.",
+    "longDescription": "AskMyPDF is a full-stack web app that converts PDFs into searchable knowledge bases with chat-style question answering. It uses server-side Next.js routes for secure upload and processing, chunks PDF content into embeddings, stores them in MongoDB Atlas Vector Search, and serves natural language answers via Google Gemini models. This project strengthened my skills in vector databases, embeddings pipelines, AI integration, and building clean, responsive UIs with real-time chat interactions.",
     "features": [
       "AI-powered question answering over uploaded PDFs",
       "Smart text extraction, chunking, and vector storage",
