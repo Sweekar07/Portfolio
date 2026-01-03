@@ -1,5 +1,46 @@
 [
   {
+    "title": "ProductImporterPro",
+    "imageSrc": "projects/productimporterpro/railway_architecture.png",
+    "description": "A production-ready CSV product import platform with a React + TypeScript UI, FastAPI backend, and an async processing pipeline using Celery + RabbitMQ. Uses Redis for temporary CSV storage and real-time progress tracking, with PostgreSQL (Aiven) as the persistent database.",
+    "skills": [
+      "React (Vite)",
+      "TypeScript",
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL (Aiven)",
+      "Celery",
+      "RabbitMQ",
+      "Redis",
+      "Docker",
+      "Railway (Deployment)",
+      "Server-Sent Events (SSE)"
+    ],
+    "source": "https://github.com/<your-username>/<your-repo>",
+    "category": "Full-Stack/Backend",
+    "screenshots": [
+      "projects/productimporterpro/railway_architecture.png",
+      "projects/productimporterpro/architecture_diagram.svg",
+      "projects/productimporterpro/home_page.png",
+      "projects/productimporterpro/upload_progress.png",
+      "projects/productimporterpro/products_table.png",
+      "projects/productimporterpro/webhooks.png",
+      "projects/productimporterpro/webhook_resp.png"
+    ],
+    "longDescription": "ProductImporterPro is a full-stack system for importing large product catalogs from CSV files without blocking API requests. The React + TypeScript frontend uploads CSVs and subscribes to live progress updates via Server-Sent Events (SSE). The FastAPI backend creates an UploadTask record in PostgreSQL, stores the raw CSV bytes temporarily in Redis with a TTL, and enqueues a Celery task into RabbitMQ. Celery workers consume tasks from RabbitMQ, retrieve the CSV from Redis, parse and validate rows, deduplicate by SKU, and perform high-throughput bulk upserts into PostgreSQL using ON CONFLICT DO UPDATE. Throughout processing, the worker writes progress snapshots back to Redis, which FastAPI streams to the UI. Webhook configurations are stored in PostgreSQL and triggered asynchronously after successful imports.",
+    "features": [
+      "Bulk CSV upload and background processing using Celery workers (no request timeouts)",
+      "RabbitMQ-backed task queue with reliable producer/consumer flow",
+      "Redis-based temporary CSV storage (TTL) and real-time progress cache for SSE streaming",
+      "High-performance bulk upsert into PostgreSQL with SKU-based conflict handling",
+      "Stage-based progress tracking (retrieving → parsing → validating → importing → finalizing → complete)",
+      "Upload history with totals: processed, failed, duplicates, timestamps, and error messages",
+      "Webhook management and asynchronous webhook triggers after import completion",
+      "Dockerized local development with Compose (FastAPI, worker, Redis, RabbitMQ, Postgres, Flower)",
+      "Railway-ready multi-service deployment (frontend, backend, workers, broker, cache) with Aiven Postgres"
+    ]
+  },
+  {
     "title": "AskMyPDF",
     "imageSrc": "projects/askMyPDF/home_page.png",
     "description": "An AI-powered PDF assistant that turns static documents into interactive Q&A experiences using vector search and Gemini AI.",
