@@ -1,11 +1,28 @@
-import React from "react";
-
+import React, { useMemo, useState } from "react";
 import { X, ExternalLink, Github } from "lucide-react";
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import "yet-another-react-lightbox/plugins/captions.css";
+
 import styles from "./ProjectModal.module.css";
 import { getImageUrl } from "../../utils";
 
 
 export const ProjectModal = ({ project, onClose }) => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  const slides = useMemo(
+    () => (project.screenshots || []).map((s) => ({
+      src: getImageUrl(s.src),
+      title: s.title,
+      description: s.description,
+    })),
+    [project.screenshots]
+  );
+
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
@@ -26,12 +43,22 @@ export const ProjectModal = ({ project, onClose }) => {
             <h3>More Screenshots</h3>
             <div className={styles.screenshotGrid}>
               {project.screenshots.map((screenshot, idx) => (
-                <img
+                <button
                   key={idx}
-                  src={getImageUrl(screenshot)}
-                  alt={`Screenshot ${idx + 1}`}
-                  className={styles.screenshot}
-                />
+                  type="button"
+                  className={styles.screenshotButton}
+                  onClick={() => {
+                    setPhotoIndex(idx);
+                    setLightboxOpen(true);
+                  }}
+                >
+                  <img
+                    src={getImageUrl(screenshot.src)}
+                    alt={screenshot.title || `Screenshot ${idx + 1}`}
+                    className={styles.screenshot}
+                    loading="lazy"
+                  />
+                </button>
               ))}
             </div>
           </div>
@@ -83,6 +110,16 @@ export const ProjectModal = ({ project, onClose }) => {
             <Github size={20} />
             View Code
           </a>
+
+          {lightboxOpen && (
+            <Lightbox
+              open={lightboxOpen}
+              close={() => setLightboxOpen(false)}
+              index={photoIndex}
+              slides={slides}
+              plugins={[Zoom, Captions]}
+            />
+          )}
         </div>
       </div>
     </div>

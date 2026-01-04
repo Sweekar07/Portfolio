@@ -16,16 +16,44 @@
       "Railway (Deployment)",
       "Server-Sent Events (SSE)"
     ],
-    "source": "https://github.com/<your-username>/<your-repo>",
+    "source": "https://github.com/Sweekar07/ProductImporterPro",
     "category": "Full-Stack/Backend",
     "screenshots": [
-      "projects/productimporterpro/railway_architecture.png",
-      "projects/productimporterpro/architecture_diagram.svg",
-      "projects/productimporterpro/home_page.png",
-      "projects/productimporterpro/upload_progress.png",
-      "projects/productimporterpro/products_table.png",
-      "projects/productimporterpro/webhooks.png",
-      "projects/productimporterpro/webhook_resp.png"
+      {
+        "src": "projects/productimporterpro/railway_architecture.png",
+        "title": "Railway architecture",
+        "description": "Deployment and service topology on Railway."
+      },
+      {
+        "src": "projects/productimporterpro/architecture_diagram.svg",
+        "title": "Architecture diagram",
+        "description": "FastAPI + Celery + RabbitMQ + Redis + Postgres workflow."
+      },
+      {
+        "src": "projects/productimporterpro/home_page.png",
+        "title": "Home page",
+        "description": "Landing screen and entry point for CSV imports."
+      },
+      {
+        "src": "projects/productimporterpro/upload_progress.png",
+        "title": "Upload progress",
+        "description": "Live progress updates streamed to the UI (SSE)."
+      },
+      {
+        "src": "projects/productimporterpro/products_table.png",
+        "title": "Products table",
+        "description": "Imported products listing view after processing."
+      },
+      {
+        "src": "projects/productimporterpro/webhooks.png",
+        "title": "Webhooks",
+        "description": "Webhook configuration UI for post-import events."
+      },
+      {
+        "src": "projects/productimporterpro/webhook_resp.png",
+        "title": "Webhook response",
+        "description": "Example webhook delivery/response after import completion."
+      }
     ],
     "longDescription": "ProductImporterPro is a full-stack system for importing large product catalogs from CSV files without blocking API requests. The React + TypeScript frontend uploads CSVs and subscribes to live progress updates via Server-Sent Events (SSE). The FastAPI backend creates an UploadTask record in PostgreSQL, stores the raw CSV bytes temporarily in Redis with a TTL, and enqueues a Celery task into RabbitMQ. Celery workers consume tasks from RabbitMQ, retrieve the CSV from Redis, parse and validate rows, deduplicate by SKU, and perform high-throughput bulk upserts into PostgreSQL using ON CONFLICT DO UPDATE. Throughout processing, the worker writes progress snapshots back to Redis, which FastAPI streams to the UI. Webhook configurations are stored in PostgreSQL and triggered asynchronously after successful imports.",
     "features": [
@@ -41,8 +69,49 @@
     ]
   },
   {
+    "title": "FileHub",
+    "imageSrc": "projects/filehub/openfga_model.png",
+    "description": "A Django REST API that demonstrates fine-grained, relationship-based file authorization using OpenFGA, with PostgreSQL persistence and a Docker Compose-based local setup.",
+    "skills": [
+      "Django 5.2+",
+      "Django REST Framework",
+      "OpenFGA",
+      "PostgreSQL 17",
+      "Docker Compose",
+      "Python OpenFGA SDK",
+      "JWT Authentication"
+    ],
+    "source": "https://github.com/Sweekar07/filehub",
+    "category": "Backend/Security",
+    "screenshots": [
+      {
+        "src": "projects/filehub/openfga_model.png",
+        "title": "OpenFGA model",
+        "description": "Relationship-based authorization model and permissions."
+      },
+      {
+        "src": "projects/filehub/architecture_diagram.png",
+        "title": "Architecture diagram",
+        "description": "Django + OpenFGA + Postgres + Docker Compose setup."
+      },
+      {
+        "src": "projects/filehub/api_endpoints.png",
+        "title": "API endpoints",
+        "description": "REST endpoints for files, sharing, and permission checks."
+      }
+    ],
+    "longDescription": "FileHub is a backend-focused file management system that replaces traditional RBAC-style permission checks with relationship-based access control (ReBAC) powered by OpenFGA. The Django REST API handles authentication via JWT and exposes endpoints to create files, list files, share files via relations (owner/editor/viewer), and query permissions/relations. OpenFGA centralizes authorization policy in a model (Zanzibar-inspired), while PostgreSQL provides persistence for both application data and authorization tuples/models, all orchestrated locally using Docker Compose for repeatable development and testing.",
+    "features": [
+      "Fine-grained, relationship-based access control (ReBAC) using OpenFGA",
+      "Centralized authorization model with computed permissions (e.g., can_view, can_edit)",
+      "JWT-secured REST APIs for file creation, listing, sharing, and permission checks",
+      "Docker Compose architecture with OpenFGA, Postgres, Django, migrations, and CLI tooling",
+      "Share files by assigning relations (owner/editor/viewer) to users and verify via permissions endpoints"
+    ]
+  },
+  {
     "title": "AskMyPDF",
-    "imageSrc": "projects/askMyPDF/home_page.png",
+    "imageSrc": "projects/askmypdf/home_page.png",
     "description": "An AI-powered PDF assistant that turns static documents into interactive Q&A experiences using vector search and Gemini AI.",
     "skills": [
       "Next.js 14",
@@ -54,11 +123,31 @@
     "source": "https://github.com/Sweekar07/AskMyPDF",
     "category": "AI/ML",
     "screenshots": [
-      "projects/askMyPDF/initial_upload_screen.png",
-      "projects/askMyPDF/after_upload_screen.png",
-      "projects/askMyPDF/answer1.png",
-      "projects/askMyPDF/answer2.png",
-      "projects/askMyPDF/answer3.png"
+      {
+        "src": "projects/askmypdf/initial_upload_screen.png",
+        "title": "Initial upload",
+        "description": "Upload screen before processing the PDF."
+      },
+      {
+        "src": "projects/askmypdf/after_upload_screen.png",
+        "title": "After upload",
+        "description": "PDF processed and ready for Q&A."
+      },
+      {
+        "src": "projects/askmypdf/answer1.png",
+        "title": "Answer example 1",
+        "description": "Sample answer generated from retrieved context."
+      },
+      {
+        "src": "projects/askmypdf/answer2.png",
+        "title": "Answer example 2",
+        "description": "Another Q&A interaction with the assistant."
+      },
+      {
+        "src": "projects/askmypdf/answer3.png",
+        "title": "Answer example 3",
+        "description": "Additional answer showing multi-turn chat flow."
+      }
     ],
     "longDescription": "AskMyPDF is a full-stack web app that converts PDFs into searchable knowledge bases with chat-style question answering. It uses server-side Next.js routes for secure upload and processing, chunks PDF content into embeddings, stores them in MongoDB Atlas Vector Search, and serves natural language answers via Google Gemini models. This project strengthened my skills in vector databases, embeddings pipelines, AI integration, and building clean, responsive UIs with real-time chat interactions.",
     "features": [
@@ -86,9 +175,21 @@
     "source": "https://github.com/Sweekar07/WhatsApp-Clone",
     "category": "Full Stack",
     "screenshots": [
-      "projects/whatsapp_clone/page_loader.png",
-      "projects/whatsapp_clone/landing_page.png",
-      "projects/whatsapp_clone/chat_screen.png"
+      {
+        "src": "projects/whatsapp_clone/page_loader.png",
+        "title": "Page loader",
+        "description": "Initial loading screen."
+      },
+      {
+        "src": "projects/whatsapp_clone/landing_page.png",
+        "title": "Landing page",
+        "description": "Entry screen before opening chats."
+      },
+      {
+        "src": "projects/whatsapp_clone/chat_screen.png",
+        "title": "Chat screen",
+        "description": "Real-time chat UI with Socket.IO messaging."
+      }
     ],
     "longDescription": "WhatsApp Web Clone brings together real-time chat features and a clean WhatsApp-style user interface, using FastAPI backend and React frontend. The project includes live Socket.IO messaging, RESTful APIs, MongoDB integration, and a fully Dockerized setup. Designed as a robust template for learning scalable web architecture and production-oriented development.",
     "features": [
@@ -110,7 +211,7 @@
       "Redis",
       "PostgreSQL"
     ],
-    "source": "https://github.com/yourusername/chatverse",
+    "source": "https://github.com/Sweekar07/django_messaging_web_app",
     "category": "Real-Time App",
     "screenshots": [],
     "longDescription": "ChatVerse delivers instant messaging using WebSockets and Redis channels, with PostgreSQL for message persistence. Features include typing indicators, read receipts, and group chat support.",
@@ -132,7 +233,7 @@
       "Sequelize",
       "Docker"
     ],
-    "source": "https://github.com/yourusername/gadgetguard",
+    "source": "https://github.com/Sweekar07/node-js-crud-app",
     "category": "Backend API",
     "screenshots": [],
     "longDescription": "GadgetGuard API provides a production-ready backend for gadget management with automated CI/CD using GitHub Actions, Docker, and Render deployment.",
