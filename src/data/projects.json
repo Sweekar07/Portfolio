@@ -111,7 +111,7 @@
   },
   {
     "title": "AskMyPDF",
-    "imageSrc": "projects/askmypdf/home_page.png",
+    "imageSrc": "projects/ask_my_pdf/home_page.png",
     "description": "An AI-powered PDF assistant that turns static documents into interactive Q&A experiences using vector search and Gemini AI.",
     "skills": [
       "Next.js 14",
@@ -124,27 +124,27 @@
     "category": "AI/ML",
     "screenshots": [
       {
-        "src": "projects/askmypdf/initial_upload_screen.png",
+        "src": "projects/ask_my_pdf/initial_upload_screen.png",
         "title": "Initial upload",
         "description": "Upload screen before processing the PDF."
       },
       {
-        "src": "projects/askmypdf/after_upload_screen.png",
+        "src": "projects/ask_my_pdf/after_upload_screen.png",
         "title": "After upload",
         "description": "PDF processed and ready for Q&A."
       },
       {
-        "src": "projects/askmypdf/answer1.png",
+        "src": "projects/ask_my_pdf/answer1.png",
         "title": "Answer example 1",
         "description": "Sample answer generated from retrieved context."
       },
       {
-        "src": "projects/askmypdf/answer2.png",
+        "src": "projects/ask_my_pdf/answer2.png",
         "title": "Answer example 2",
         "description": "Another Q&A interaction with the assistant."
       },
       {
-        "src": "projects/askmypdf/answer3.png",
+        "src": "projects/ask_my_pdf/answer3.png",
         "title": "Answer example 3",
         "description": "Additional answer showing multi-turn chat flow."
       }
