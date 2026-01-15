@@ -8,6 +8,7 @@ A personal portfolio application developed to demonstrate technical expertise, s
 *   **React:** Frontend library for building the user interface
 *   **Vite:** Build tool and development server for high-performance tooling
 *   **JavaScript (ES6+):** Core logic and interactivity
+*   **Supabase** Baas will be added soon for analytics and user count
 
 ### Styling and Assets
 *   **CSS Modules:** Component-scoped styling to prevent global namespace collisions
