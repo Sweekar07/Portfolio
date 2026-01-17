@@ -10,6 +10,16 @@ export default defineConfig({
     modules: {  // overwrite each other but "CSS modules" allows us to have multiple css files
       localsConvention: "camelCase"
     } // using the same class names but the styles won't overwrite each other as long
-  } // as they are imported into seperate react files.
+  }, // as they are imported into seperate react files.
   // we also rename the src/App.css to src/App.module.css to use "CSS module"
+
+  server: {
+    proxy: {
+      '/api/geo': {
+        target: 'https://freeipapi.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/geo/, '/api/json'),
+      }
+    }
+  }
 })
