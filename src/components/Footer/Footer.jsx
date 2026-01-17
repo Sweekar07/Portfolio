@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Footer.module.css";
 import { Flame, Eye } from "lucide-react";
+
+import styles from "./Footer.module.css";
+import supabase from "../../lib/supabase";
 
 export const Footer = () => {
     const year = new Date().getFullYear();
@@ -8,18 +10,16 @@ export const Footer = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Fetch visitor count from your Supabase function
         fetchVisitorCount();
     }, []);
 
     const fetchVisitorCount = async () => {
         try {
-            // Replace with your actual Supabase call
-            // const { data } = await supabase.rpc('get_visitor_count');
-            // setVisitorCount(data);
+            const { data, error } = await supabase.rpc("get_unique_visitor_count");
+            console.log("visitior count data:", data);
+            if (error) throw error;
 
-            // Temporary mock data for testing
-            setVisitorCount(1);
+            setVisitorCount(data);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching visitor count:', error);
@@ -46,7 +46,7 @@ export const Footer = () => {
                     <span className={styles.count}>
                         {loading ? '...' : visitorCount?.toLocaleString()}
                     </span>
-                    <span className={styles.label}>visitors</span>
+                    <span className={styles.label}>unique visitors</span>
                 </span>
             </p>
         </footer>
