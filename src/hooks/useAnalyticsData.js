@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { UAParser } from 'ua-parser-js';
 
+import { getOrCreateSessionId } from "../lib/analytics/session";
+
 export const useAnalyticsData = () => {
     const [analyticsData, setAnalyticsData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -32,6 +34,8 @@ export const useAnalyticsData = () => {
 
     const collectAllData = async () => {
         try {
+            const session_id = getOrCreateSessionId();
+            
             // 1. Browser Fingerprint (unique visitor ID)
             const fp = await FingerprintJS.load();
             const result = await fp.get();
@@ -74,6 +78,7 @@ export const useAnalyticsData = () => {
                 // Visitor Identity
                 fingerprint: fingerprint,
                 visitor_id: `visitor_${fingerprint}`,
+                session_id,
                 ip_hash: geoData.ipAddress ? btoa(geoData.ipAddress).substring(0, 20) : null,
 
                 // Geography
@@ -130,7 +135,6 @@ export const useAnalyticsData = () => {
                     referrer: document.referrer || 'direct',
                     landing_page: window.location.pathname,
                     url: window.location.href,
-                    title: document.title,
                 },
 
                 // UTM
