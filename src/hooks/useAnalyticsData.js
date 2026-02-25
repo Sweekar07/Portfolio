@@ -15,18 +15,50 @@ export const useAnalyticsData = () => {
         try {
             const url = isDev
                 ? '/api/geo'  // Vite proxy
-                : 'https://ipapi.co/json/'; // Direct (production)
+                // : 'https://ipapi.co/json/'; // Direct (production)
+                : 'http://ip-api.com/json/?fields=status,country,countryCode,regionName,city,lat,lon,timezone,isp,query';
 
             const response = await fetch(url);
             const data = await response.json();
 
-            return data;
+            // return data;
+            if (data.status === 'success') {
+                return {
+                    ipAddress: data.query,
+                    cityName: data.city,
+                    regionName: data.regionName,
+                    countryName: data.country,
+                    countryCode: data.countryCode,
+                    latitude: data.lat,
+                    longitude: data.lon,
+                    timeZone: data.timezone,
+                    ispName: data.isp
+                };
+            }
         } catch (err) {
             console.warn('Geolocation failed:', err);
-            return { /* fallback */ };
+            // return { /* fallback */ };
+            try {
+                // Fallback to ipapi.co which supports HTTPS for free
+                const fallbackRes = await fetch('https://ipapi.co/json/');
+                const fb = await fallbackRes.json();
+                return {
+                    ipAddress: fb.ip,
+                    cityName: fb.city,
+                    regionName: fb.region,
+                    countryName: fb.country_name,
+                    countryCode: fb.country_code,
+                    latitude: fb.latitude,
+                    longitude: fb.longitude,
+                    timeZone: fb.timezone,
+                    ispName: fb.org
+                };
+            } catch (fallbackErr) {
+                console.error('All Geolocation providers failed:', fallbackErr);
+                return {};
+            }
         }
     };
-
 
     useEffect(() => {
         collectAllData();
@@ -83,14 +115,14 @@ export const useAnalyticsData = () => {
 
                 // Geography
                 geo: {
-                    country: geoData.countryName,
-                    country_code: geoData.countryCode,
-                    region: geoData.regionName,
-                    city: geoData.cityName,
-                    latitude: geoData.latitude,
-                    longitude: geoData.longitude,
-                    timezone: geoData.timeZone,
-                    isp: geoData.ispName,
+                    country: geoData.countryName || null,
+                    country_code: geoData.countryCode || null,
+                    region: geoData.regionName || null,
+                    city: geoData.cityName || null,
+                    latitude: geoData.latitude || null,
+                    longitude: geoData.longitude || null,
+                    timezone: geoData.timeZone || null,
+                    isp: geoData.ispName || null,
                 },
 
                 // Device
