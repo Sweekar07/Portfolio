@@ -24,12 +24,19 @@ export const Experience = () => {
     setSelectedRoleIndex(0);
   };
 
+  const parseMonthYear = (str) => {
+    if (!str || str.toLowerCase() === "present") return new Date();
+
+    const [month, year] = str.split(" ");
+    return new Date(`${month} 1, ${year}`);
+  };
+
   // Calculate total months worked at a company
   const getTotalDuration = (roles) => {
     let totalMonths = 0;
     roles.forEach((role) => {
-      const start = new Date(role.startDate.replace(/(\w+)\s(\d+)/, "$2 $1"));
-      const end = new Date(role.endDate.replace(/(\w+)\s(\d+)/, "$2 $1"));
+      const start = parseMonthYear(role.startDate);
+      const end = parseMonthYear(role.endDate);
       const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
       totalMonths += months;
     });
@@ -72,9 +79,8 @@ export const Experience = () => {
             return (
               <button
                 key={idx}
-                className={`${styles.timelineItem} ${
-                  selectedCompanyIndex === idx ? styles.timelineItemActive : ""
-                }`}
+                className={`${styles.timelineItem} ${selectedCompanyIndex === idx ? styles.timelineItemActive : ""
+                  }`}
                 onClick={() => handleCompanyChange(idx)}
               >
                 <div className={styles.timelineMarker} />
@@ -119,9 +125,8 @@ export const Experience = () => {
                         {currentCompany.roles.map((role, roleIdx) => (
                           <button
                             key={roleIdx}
-                            className={`${styles.roleTab} ${
-                              selectedRoleIndex === roleIdx ? styles.roleTabActive : ""
-                            }`}
+                            className={`${styles.roleTab} ${selectedRoleIndex === roleIdx ? styles.roleTabActive : ""
+                              }`}
                             onClick={() => setSelectedRoleIndex(roleIdx)}
                           >
                             <span className={styles.roleTitle}>{role.title}</span>
@@ -162,7 +167,7 @@ export const Experience = () => {
                     </div>
                   )}
                 </div>
-                
+
               </div>
 
               {/* Role Content */}
