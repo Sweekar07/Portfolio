@@ -1,6 +1,45 @@
 [
   {
     "company": {
+      "name": "Gnani AI",
+      "shortName": "Gnani AI",
+      "logo": "history/gnani.jpg",
+      "location": "Bangalore"
+    },
+    "roles": [
+      {
+        "id": "gnani-forward-deployed-engineer",
+        "title": "Forward Deployed Engineer",
+        "type": "fulltime",
+        "startDate": "Feb 2026",
+        "endDate": "Present",
+        "duration": "Present",
+        "responsibilities": [
+          "Built production AI voice bots using FastAPI with LLM prompting, ASR, and TTS pipelines",
+          "Designed end-to-end conversational systems for real-time voice interactions",
+          "Integrated MongoDB and Redis for session state management and caching",
+          "Developed modular conversational flows and integrated third-party APIs",
+          "Optimized latency and reliability for real-time AI voice systems"
+        ],
+        "technologies": [
+          "FastAPI",
+          "MongoDB",
+          "Redis",
+          "LLMs",
+          "ASR",
+          "TTS"
+        ],
+        "skills": {
+          "ai_systems": ["LLM Prompting", "Conversational AI", "Voice Bots"],
+          "backend": ["FastAPI", "Scalable APIs", "Microservices"],
+          "databases": ["MongoDB", "Redis"],
+          "realtime": ["Low-latency Systems", "Streaming Pipelines"]
+        }
+      }
+    ]
+  },
+  {
+    "company": {
       "name": "Sura Systems Private Limited",
       "shortName": "Sura Systems",
       "logo": "history/sura.jpg",
